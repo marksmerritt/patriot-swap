@@ -21,6 +21,7 @@ end
 group :test do 
   gem 'capybara', '~> 3.20'
   gem 'database_cleaner', '~> 1.7'
+  gem 'shoulda-matchers', '~> 4.0', '>= 4.0.1'
 end
 
 group :development do
@@ -31,3 +32,6 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
