@@ -1,2 +1,9 @@
+<% if current_user.present? %>
+  <%= link_to "Log Out", destroy_user_session_path, method: :delete, id: "logout-link" %>
+<% else %>
+  <%= link_to "Sign In", new_user_session_path, id: "signin-link" %>
+  <%= link_to "Sign Up", new_user_registration_path, id: "signup-link" %>
+<% end %>
+
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
