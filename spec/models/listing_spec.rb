@@ -19,5 +19,19 @@ RSpec.describe Listing, type: :model do
       listing.body = nil
       expect(listing).to_not be_valid
     end
+
+    it "has a monetized price" do 
+      is_expected.to monetize(:price).with_currency(:usd)
+    end
+
+    it "has a price >= 0" do 
+      listing.price_cents = -1
+      expect(listing).to_not be_valid
+    end
+
+    it "has a price <= 1000" do 
+      listing.price_cents = 100001
+      expect(listing).to_not be_valid
+    end
   end
 end
