@@ -2,12 +2,25 @@ require "rails_helper"
 
 describe "navigation" do 
   describe "new" do 
-    it "can be created from a form" do 
-      visit new_course_path
-      fill_in "code-field", with: "IT300"
-      fill_in "title-field", with: "Modern Telecommunications"
+    context "with valid input" do 
+      it "can be created from a form" do 
+        visit new_course_path
+        fill_in "code-field", with: "IT300"
+        fill_in "title-field", with: "Modern Telecommunications"
 
-      expect{ click_button "course-submit-btn" }.to change{ Course.count }.by(1)
+        expect{ click_button "course-submit-btn" }.to change{ Course.count }.by(1)
+      end
+    end
+
+    context "with invalid input" do 
+      it "is not created from the form" do 
+        visit new_course_path
+        fill_in "code-field", with: "something"
+        fill_in "title-field", with: "1"
+        click_button "course-submit-btn"
+
+        expect{ click_button "course-submit-btn" }.to change{ Course.count }.by(0)
+      end
     end
   end
 

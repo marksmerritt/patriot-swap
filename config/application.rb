@@ -23,7 +23,7 @@ module PatriotSwap
     config.generators do |g|
       g.system_tests = nil
       g.test_framework :rspec
-      g.helper_specs false
+      # g.helper_specs false
       g.controller_specs false
       g.view_specs false
       g.routing_specs false
