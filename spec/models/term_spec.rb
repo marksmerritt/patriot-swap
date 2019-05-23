@@ -26,8 +26,8 @@ RSpec.describe Term, type: :model do
     end
 
     it "has an end date after the start date" do 
-      term.start_date = Date.today 
-      term.end_date = Date.yesterday
+      term.start_date = "2019-05-22"
+      term.end_date = "2019-05-21"
 
       expect(term).to_not be_valid
     end
