@@ -1,6 +1,16 @@
 require "rails_helper"
 
-describe "navigation" do 
+describe "navigation" do
+  describe "index" do 
+    it "displays listings" do 
+      @listing1 = FactoryBot.create(:listing)
+      @listing2 = FactoryBot.create(:second_listing)
+
+      visit listings_path
+      expect(page).to have_content(/#{@listing1.title}|#{@listing1.body}|#{@listing2.title}|#{@listing2.body}/)
+    end
+  end
+
   describe "new" do 
     before do 
       user = FactoryBot.create(:user)

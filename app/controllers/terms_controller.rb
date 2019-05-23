@@ -1,4 +1,8 @@
 class TermsController < ApplicationController
+  def index
+    @terms = Term.all
+  end
+
   def new
     @term = Term.new
   end

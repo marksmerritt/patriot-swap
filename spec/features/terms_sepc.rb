@@ -1,6 +1,16 @@
 require "rails_helper"
 
 describe "navigation" do 
+  describe "index" do 
+    it "displays a list of terms" do 
+      @term1 = FactoryBot.create(:term)
+      @term2 = FactoryBot.create(:second_term)
+
+      visit terms_path
+      expect(page).to have_content(/#{@term1.year}|#{@term1.season}|#{@term2.year}|#{@term2.season}/)
+    end
+  end
+
   describe "new" do 
     it "can be created from a form" do 
       visit new_term_path

@@ -1,6 +1,16 @@
 require "rails_helper"
 
 describe "navigation" do 
+  describe "index" do 
+    it "displays a list of courses" do 
+      @course1 = FactoryBot.create(:course)
+      @course2 = FactoryBot.create(:second_course)
+
+      visit courses_path
+      expect(page).to have_content(/#{@course1.code}|#{@course1.title}|#{@course2.code}|#{@course2.title}/)
+    end
+  end
+
   describe "new" do 
     context "with valid input" do 
       it "can be created from a form" do 

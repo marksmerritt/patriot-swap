@@ -5,4 +5,11 @@ FactoryBot.define do
     association :seller, factory: :user
     price_cents { 1000 }
   end
+
+  factory :second_listing, class: Listing do
+    title { "My Awesome 2nd Textbook" }
+    body { "I'm selling my awesome 2nd textbook" }
+    association :seller, factory: :user
+    price_cents { 2000 }
+  end
 end
