@@ -1,0 +1,9 @@
+<%= form_with model: @course do |f| %>
+  <%= f.label :code %>
+  <%= f.text_field :code, id: "code-field" %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, id: "title-field" %> 
+
+  <%= f.submit "Submit", id: "course-submit-btn" %> 
+<% end %>
