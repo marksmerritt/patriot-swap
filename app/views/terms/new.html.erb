@@ -1,0 +1,20 @@
+<%= form_with model: @term do |f| %>
+
+  <%= f.label :season %>
+  <%= f.select :season, Term.seasons.keys %>
+
+
+  <%= f.label :year %>
+  <%= f.text_field :year, id: "year-field" %>
+  
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
+
+  <%= f.label :end_date %>
+  <%= f.date_select :end_date %>
+  
+
+
+  <%= f.submit "Submit", id: "term-submit-btn" %>
+
+<% end %>
