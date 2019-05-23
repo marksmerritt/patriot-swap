@@ -16,4 +16,13 @@ describe "navigation" do
       expect{ click_button "listing-submit-btn" }.to change{ Listing.count }.by(1)
     end
   end
+
+  describe "show" do 
+    let(:listing) { FactoryBot.create(:listing) }
+
+    it "displays the correct attributes" do 
+      visit listing_path(listing)
+      expect(page).to have_content(listing.title).and have_content(listing.body)
+    end
+  end
 end
