@@ -5,7 +5,7 @@
   
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, id: "first-name-field" %>
+    <%= f.text_field :first_name, autofocus: true, id: "first-name-field" %>
   </div>
 
   <div class="field">
@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email-field" %>
+    <%= f.email_field :email, autocomplete: "email", id: "email-field" %>
   </div>
 
   <div class="field">
