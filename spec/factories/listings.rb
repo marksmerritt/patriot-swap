@@ -3,6 +3,7 @@ FactoryBot.define do
     title { "My Awesome Textbook" }
     body { "I'm selling my awesome textbook" }
     association :seller, factory: :user
+    association :book
     price_cents { 1000 }
   end
 
@@ -10,6 +11,7 @@ FactoryBot.define do
     title { "My Awesome 2nd Textbook" }
     body { "I'm selling my awesome 2nd textbook" }
     association :seller, factory: :user
+    association :book
     price_cents { 2000 }
   end
 end
