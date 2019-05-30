@@ -10,6 +10,8 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.seller = current_user
+    # TODO: Refactor
+    @listing.book = Book.create(title: "Some title", isbn: "1234")
 
 
     if @listing.save
