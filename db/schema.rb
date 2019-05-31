@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_31_203110) do
+ActiveRecord::Schema.define(version: 2019_05_31_213002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,17 @@ ActiveRecord::Schema.define(version: 2019_05_31_203110) do
     t.integer "price_cents", default: 0, null: false
     t.bigint "book_id", null: false
     t.index ["book_id"], name: "index_listings_on_book_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "zip"
+    t.string "state"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "terms", force: :cascade do |t|
