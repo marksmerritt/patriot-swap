@@ -1,9 +1,20 @@
 <%= form_with model: @listing do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, id: "title-field" %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, id: "title-field", class: "form-control" %>
+  </div>
 
-  <%= f.label :price_cents %>
-  <%= f.text_field :price_cents, id: "price-cents-field" %>
-
-  <%= f.submit "Post", id: "listing-submit-btn" %>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.rich_text_area :body, id: "body-field", class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :price_cents %>
+    <%= f.text_field :price_cents, id: "price-cents-field", class: "form-control" %>
+  </div>
+  
+  <div>
+    <%= f.submit "Post", id: "listing-submit-btn" %>
+  </div>
 <% end %>

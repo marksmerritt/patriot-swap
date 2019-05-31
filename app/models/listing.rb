@@ -1,4 +1,6 @@
 class Listing < ApplicationRecord
+  has_rich_text :body
+
   belongs_to :seller, class_name: "User"
   belongs_to :book
 
