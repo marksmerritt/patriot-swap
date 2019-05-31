@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
-  include Taggable
   Gutentag::ActiveRecord.call self
+  include Taggable
 
   has_many :listings
 

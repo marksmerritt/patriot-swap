@@ -29,6 +29,7 @@ describe "navigation" do
         visit new_book_listing_path(@book)
         fill_in "title-field", with: "Some Great Title"
         fill_in "price-cents-field", with: "10000"
+        fill_in "tag-names-field", with: "IT400"
 
         expect{ click_button "listing-submit-btn" }.to change{ Listing.count }.by(1)
       end

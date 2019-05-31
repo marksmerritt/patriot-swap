@@ -1,4 +1,7 @@
 class Listing < ApplicationRecord
+  Gutentag::ActiveRecord.call self
+  include Taggable
+  
   has_rich_text :body
 
   belongs_to :seller, class_name: "User"

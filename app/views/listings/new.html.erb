@@ -14,6 +14,11 @@
     <%= f.text_field :price_cents, id: "price-cents-field", class: "form-control" %>
   </div>
   
+  <div class="form-group">
+    <%= f.label :tags, value: "Tags" %>
+    <%= f.text_field :tags_as_string, id: "tag-names-field" %>
+  </div>
+  
   <div>
     <%= f.submit "Post", id: "listing-submit-btn" %>
   </div>

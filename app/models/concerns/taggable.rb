@@ -1,6 +1,6 @@
 module Taggable
   include ActiveSupport::Concern
-  
+
   def tags_as_string
     tag_names.join(", ")
   end
