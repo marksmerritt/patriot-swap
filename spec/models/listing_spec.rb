@@ -29,4 +29,21 @@ RSpec.describe Listing, type: :model do
       expect(listing).to_not be_valid
     end
   end
+
+  describe "scopes" do 
+    before do 
+      @listing1 = FactoryBot.create(:listing)
+      @listing2 = FactoryBot.create(:second_listing)
+    end
+
+    describe ".for_book" do 
+      it "returns the correct listings" do 
+        expect(Listing.for_book(@listing1.book).first).to eq(@listing1)
+      end
+
+      it "does not return listings associated with other books" do 
+        expect(Listing.for_book(@listing1.book).count).to eq(1)
+      end
+    end
+  end
 end

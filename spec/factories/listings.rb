@@ -9,7 +9,7 @@ FactoryBot.define do
   factory :second_listing, class: Listing do
     title { "My Awesome 2nd Textbook" }
     association :seller, factory: :user
-    association :book
+    association :book, factory: :second_book
     price_cents { 2000 }
   end
 end

@@ -12,7 +12,7 @@ describe "navigation" do
       @listing1 = FactoryBot.create(:listing)
       @listing2 = FactoryBot.create(:second_listing)
 
-      visit listings_path
+      visit book_listings_path(@listing1.book)
       expect(page).to have_content(/#{@listing1.title}|#{@listing2.title}/)
     end
   end
@@ -21,11 +21,12 @@ describe "navigation" do
     before do 
       user = FactoryBot.create(:user)
       login_as(user, :scope => :user)
+      @book = FactoryBot.create(:book)
     end
 
     context "with valid input" do 
       it "can be created from a form" do 
-        visit new_listing_path
+        visit new_book_listing_path(@book)
         fill_in "title-field", with: "Some Great Title"
         fill_in "price-cents-field", with: "10000"
 
@@ -35,7 +36,7 @@ describe "navigation" do
 
     context "with invalid input" do 
       it "is not created from the form" do 
-        visit new_listing_path
+        visit new_book_listing_path(@book)
         fill_in "title-field", with: "So"
         fill_in "price-cents-field", with: "10000000"
 
@@ -48,7 +49,7 @@ describe "navigation" do
     let(:listing) { FactoryBot.create(:listing) }
 
     it "displays the correct attributes" do 
-      visit listing_path(listing)
+      visit book_listing_path(listing.book, listing)
       expect(page).to have_content(listing.title)
     end
   end

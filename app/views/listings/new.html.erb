@@ -1,4 +1,4 @@
-<%= form_with model: @listing do |f| %>
+<%= form_with model: [@book, @listing] do |f| %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, id: "title-field", class: "form-control" %>

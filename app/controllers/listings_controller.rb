@@ -1,8 +1,9 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_book
 
   def index 
-    @listings = Listing.all
+    @listings = Listing.for_book(@book)
   end
 
   def new
@@ -12,12 +13,10 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.seller = current_user
-    # TODO: Refactor
-    @listing.book = Book.create(title: "Some title", isbn: "1234")
-
+    @listing.book = @book
 
     if @listing.save
-      redirect_to @listing, success: "Listing created successfully"
+      redirect_to [@book, @listing], success: "Listing created successfully"
     else
       render :new
     end
@@ -32,5 +31,9 @@ class ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(:title, :body, :price_cents)
+  end
+
+  def set_book
+    @book = Book.find(params[:book_id])
   end
 end
