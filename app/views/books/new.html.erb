@@ -1,0 +1,12 @@
+<%= form_with model: @book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, id: "title-field" %>
+
+  <%= f.label :isbn %>
+  <%= f.text_field :isbn, id: "isbn-field" %>
+
+  <%= f.label :tags, value: "Tags" %>
+  <%= f.text_field :tags_as_string, id: "tag-names-field" %>
+
+  <%= f.submit "Submit", id: "submit-btn" %>
+<% end %>

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :terms
   resources :courses
   resources :listings
+  resources :books
 end
