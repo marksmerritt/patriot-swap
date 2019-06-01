@@ -10,5 +10,6 @@ FactoryBot.define do
     first_name { "User" }
     last_name { "Doe" }
     confirmed_at { Date.yesterday }
+    association :location
   end
 end

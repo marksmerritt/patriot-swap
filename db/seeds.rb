@@ -4,7 +4,19 @@ require 'faker'
 Listing.delete_all
 Book.delete_all
 User.delete_all
+Location.delete_all
 
+# Create Locations
+
+location = Location.create!(
+  street: "4400 University Dr",
+  city: "Fairfax",
+  zip: "22030",
+  state: "VA"
+)
+
+@locations = Location.all
+puts "#{Location.count} locations created"
 
 # Create Users
 
@@ -13,7 +25,8 @@ admin_user = User.new(
   last_name: "Merritt",
   email: "mark@example.com",
   password: "helloworld", 
-  password_confirmation: "helloworld"
+  password_confirmation: "helloworld",
+  location: @locations.sample
 )
 
 admin_user.skip_confirmation!
@@ -27,7 +40,8 @@ puts "Admin User created"
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: "helloworld", 
-    password_confirmation: "helloworld"
+    password_confirmation: "helloworld",
+    location: @locations.sample
   )
 
   u.skip_confirmation!

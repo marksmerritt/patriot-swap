@@ -1,1 +1,3 @@
-<%= @listings.inspect %>
+<% @listings.each do |listing| %>
+  <%= link_to listing.title, book_listing_path(@book, listing) %>
+<% end %>

@@ -5,3 +5,10 @@
 <p>$<%= @listing.price %></p>
 <p><%= @listing.book.title %></p>
 <p><%= @listing.tag_names %></p>
+
+<div class="row">
+  <div class="col-md-12">
+    <!-- TODO: Antipattern! -->
+    <%= static_google_map(@listing.seller.location.longitude, @listing.seller.location.latitude) %>
+  </div>
+</div>
