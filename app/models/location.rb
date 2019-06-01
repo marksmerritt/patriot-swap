@@ -11,6 +11,7 @@ class Location < ApplicationRecord
   end
 
   def address_changed?
-    street_changed? || city_changed? || state_changed? || zip_changed? 
+    attrs = Location.validators.first.attributes
+    attrs.any?{ |a| send "#{a}_changed?" }
   end
 end
