@@ -4,6 +4,8 @@ class User < ApplicationRecord
          :confirmable, :trackable, :omniauthable,
          :timeoutable, :lockable
 
+  delegate :longitude, :latitude, to: :location
+
   has_many :listings, foreign_key: "seller_id"
   belongs_to :location
 
