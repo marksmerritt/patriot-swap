@@ -11,8 +11,8 @@ Location.delete_all
 location = Location.create!(
   street: "4400 University Dr",
   city: "Fairfax",
-  zip: "22030",
-  state: "VA"
+  state: "VA", 
+  zip: "22030"
 )
 
 @locations = Location.all
