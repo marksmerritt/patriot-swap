@@ -7,5 +7,7 @@ class User < ApplicationRecord
   has_many :listings, foreign_key: "seller_id"
   belongs_to :location
 
+  accepts_nested_attributes_for :location
+
   validates_presence_of :first_name, :last_name
 end

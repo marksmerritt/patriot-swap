@@ -13,6 +13,28 @@
     <%= f.text_field :last_name, id: "last-name-field" %>
   </div>
 
+  <%= f.fields_for :location do |location| %>
+    <div class="field">
+      <%= location.label :street %><br />
+      <%= location.text_field :street, id: "street-field" %>
+    </div>
+
+    <div class="field">
+      <%= location.label :city %><br />
+      <%= location.text_field :city, id: "city-field" %>
+    </div>
+
+    <div class="field">
+      <%= location.label :state %><br />
+      <%= location.text_field :state, id: "state-field" %>
+    </div>
+
+    <div class="field">
+      <%= location.label :zip %><br />
+      <%= location.text_field :zip, id: "zip-field" %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email", id: "email-field" %>
