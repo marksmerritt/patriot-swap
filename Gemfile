@@ -44,3 +44,5 @@ gem 'image_processing', '~> 1.9'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'geocoder', '~> 1.5', '>= 1.5.1'
 gem "aws-sdk-s3", require: false
+gem 'google-api-client', '~> 0.11'
+gem 'googlebooks', '~> 0.0.9'

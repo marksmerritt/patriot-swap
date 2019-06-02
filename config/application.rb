@@ -19,6 +19,7 @@ Bundler.require(*Rails.groups)
 module PatriotSwap
   class Application < Rails::Application
     config.load_defaults 6.0
+    config.eager_load_paths << Rails.root.join('lib')
 
     config.generators do |g|
       g.system_tests = nil
