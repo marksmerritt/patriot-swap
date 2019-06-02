@@ -3,6 +3,7 @@ class Listing < ApplicationRecord
   include Taggable
   
   has_rich_text :body
+  has_many_attached :images
 
   belongs_to :seller, class_name: "User"
   belongs_to :book

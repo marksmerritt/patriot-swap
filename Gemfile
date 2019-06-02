@@ -43,3 +43,4 @@ gem 'faker', '~> 1.9', '>= 1.9.3'
 gem 'image_processing', '~> 1.9'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'geocoder', '~> 1.5', '>= 1.5.1'
+gem "aws-sdk-s3", require: false

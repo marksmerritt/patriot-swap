@@ -11,3 +11,11 @@
     <%= static_google_map(@listing.seller.longitude, @listing.seller.latitude) %>
   </div>
 </div>
+
+<ul>
+  <% @listing.images.each do |img| %>
+    <li>
+      <%= image_tag img %>
+    </li>
+  <% end %>
+</ul>

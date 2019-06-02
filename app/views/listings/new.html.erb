@@ -1,4 +1,10 @@
 <%= form_with model: [@book, @listing] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :images %>
+    <%= f.file_field :images, multiple: true, id: "images-field", class: "form-control" %>
+  </div>
+
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, id: "title-field", class: "form-control" %>
@@ -22,4 +28,5 @@
   <div>
     <%= f.submit "Post", id: "listing-submit-btn" %>
   </div>
+
 <% end %>
