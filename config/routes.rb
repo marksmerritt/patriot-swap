@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :books do 
     resources :listings
   end
+
+  resources :sellers, only: [:index]
 end
