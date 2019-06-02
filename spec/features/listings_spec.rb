@@ -24,6 +24,7 @@ describe "navigation" do
       @book = FactoryBot.create(:book)
     end
 
+    # TODO: Form field helper
     context "with valid input" do 
       it "can be created from a form" do 
         visit new_book_listing_path(@book)

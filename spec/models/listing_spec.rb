@@ -30,6 +30,17 @@ RSpec.describe Listing, type: :model do
     end
   end
 
+  describe "attachments" do 
+    let(:listing) { FactoryBot.create(:listing) }
+
+    describe "images" do 
+      it "can be attached" do 
+        img = fixture_file_upload(Rails.root.join("public", "apple-touch-icon.png"), "image/png")
+        expect{ listing.images.attach(img) }.to change{ ActiveStorage::Attachment.count }.by(1)
+      end
+    end
+  end
+
   describe "scopes" do 
     before do 
       @listing1 = FactoryBot.create(:listing)
