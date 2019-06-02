@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
 
   resources :sellers, only: [:index]
+  resources :buyers, only: [:index]
 end
