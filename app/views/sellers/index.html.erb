@@ -1,7 +1,37 @@
 <h1>Sellers#index</h1>
 
-<% @books.each do |book| %>
-  <div>
-    <%= link_to book.title, new_book_listing_path(book), id: "sell-book-#{book.id}" %>
-  </div>
+<%= form_tag sellers_path, method: :get do %>
+  <%= text_field_tag :q, nil %>
+<% end %>
+
+<% if @book_search %>
+  <ul>
+    <li>
+      <%= image_tag @book_search.image_link(zoom: 5, curl: true) %>
+    </li>
+    <li>
+      Title: <%= @book_search.title %> <br>    
+    </li>
+    <li>
+      ISBN_10: <%= @book_search.isbn_10 %>    
+    </li>
+    <li>
+      ISBN_13: <%= @book_search.isbn_13 %>
+    </li>
+    <li>
+      Publisher: <%= @book_search.publisher %>    
+    </li>
+    <li>
+      Date Published: <%= @book_search.published_date %>
+    </li>
+    <li>
+      Authors: <%= @book_search.authors %>
+    </li>
+    <li>
+      Description: <%= @book_search.description %>
+    </li>
+    <li>
+      <%= link_to "Sell this book", new_book_listing_path(@book) %>
+    </li>
+  </ul>
 <% end %>
