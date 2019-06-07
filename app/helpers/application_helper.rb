@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def static_google_map(long, lat)
     image_tag(
-                "http://maps.googleapis.com/maps/api/staticmap?center=#{lat},#{long}&markers=#{lat},#{long}&zoom=12&size=640x400&key=#{ENV["google_key"]}",  
+                "http://maps.googleapis.com/maps/api/staticmap?center=#{lat},#{long}&markers=#{lat},#{long}&zoom=12&size=640x400&key=#{ENV["GOOGLE_KEY"]}",  
                 alt: "Location on a map"
               )
   end
