@@ -1,7 +1,12 @@
-module BookSearch
-  # TODO: Move to forked gem
-  def self.by_isbn(isbn)
-    books = GoogleBooks.search("isbn:#{isbn}", api_key: ENV["GOOGLE_KEY"])
-    books.first
+class BookSearch
+  class << self
+    VALID_PARAMS = ['isbn', 'title'].freeze
+
+    VALID_PARAMS.each do |attr|
+      define_method "by_#{attr}" do |value|
+        books = GoogleBooks.search("#{attr}:#{value}", api_key: ENV["GOOGLE_KEY"])
+        books.first
+      end
+    end
   end
 end
