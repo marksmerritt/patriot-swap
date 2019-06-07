@@ -7,5 +7,7 @@ class Book < ApplicationRecord
 
   has_many :listings
 
+  has_one_attached :image
+
   validates_presence_of :title, :isbn
 end

@@ -1,34 +1,32 @@
+<!-- TODO: Refactor book details to partial -->
 <h1>Sellers#index</h1>
 
 <%= form_tag sellers_path, method: :get do %>
   <%= text_field_tag :q, nil %>
 <% end %>
 
-<% if @book_search %>
+<% if @book %>
   <ul>
     <li>
-      <%= image_tag @book_search.image_link(zoom: 5, curl: true) %>
+      <%= image_tag @book.image %>
     </li>
     <li>
-      Title: <%= @book_search.title %> <br>    
+      Title: <%= @book.title %> <br>    
     </li>
     <li>
-      ISBN_10: <%= @book_search.isbn_10 %>    
+      ISBN: <%= @book.isbn %>    
     </li>
     <li>
-      ISBN_13: <%= @book_search.isbn_13 %>
+      Publisher: <%= @book.publisher %>    
     </li>
     <li>
-      Publisher: <%= @book_search.publisher %>    
+      Date Published: <%= @book.published_date %>
     </li>
     <li>
-      Date Published: <%= @book_search.published_date %>
+      Authors: <%= @book.authors %>
     </li>
     <li>
-      Authors: <%= @book_search.authors %>
-    </li>
-    <li>
-      Description: <%= @book_search.description %>
+      Description: <%= @book.description %>
     </li>
     <li>
       <%= link_to "Sell this book", new_book_listing_path(@book) %>
