@@ -1,6 +1,6 @@
 class BookSearch
   class << self
-    VALID_PARAMS = ['isbn', 'title'].freeze
+    VALID_PARAMS = Book::SEARCHABLE_ATTRS
 
     VALID_PARAMS.each do |attr|
       define_method "by_#{attr}" do |value|

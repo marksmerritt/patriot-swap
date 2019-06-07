@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  SEARCHABLE_ATTRS = ["isbn", "title"].freeze
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 
