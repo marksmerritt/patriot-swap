@@ -23,6 +23,7 @@ group :test do
   gem 'database_cleaner', '~> 1.7'
   gem 'shoulda-matchers', '~> 4.0', '>= 4.0.1'
   gem 'simplecov', '~> 0.16.1', require: false
+  gem 'webmock', '~> 3.6'
 end
 
 group :development do
