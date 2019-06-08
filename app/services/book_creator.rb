@@ -1,27 +1,29 @@
 require 'open-uri'
 
 class BookCreator < ApplicationService
-  attr_reader :isbn
-
   def initialize(isbn)
     @isbn = isbn
   end
 
+  # TODO: Add errors to result
   def call
-    response = book_search
+    response = BookSearch.by_isbn(@isbn)
 
-    # TODO: Unsafe, Validations
-    @book = Book.where(isbn: response.isbn).first_or_initialize do |book|
-      book.title = response.title
-      book.isbn = response.isbn
-      book.publisher = response.publisher
-      book.authors = response.authors
-      book.description = response.description
+    if response
+      response = response.first
+      @book = Book.where(isbn: response.isbn).first_or_initialize do |book|
+        set_book_attrs(book, response)
+      end
+
+      unless @book.persisted?
+        if @book.save && response.image_link
+          attach_img(@book, response.image_link)
+        end
+      end
     end
-    attach_img(@book, response.image_link) unless @book.image.attached?
-    @book.save
 
-    @book
+    return OpenStruct.new(success?: true, book: @book) if @book
+    OpenStruct.new(success?: false, book: nil) 
   end
 
 
@@ -29,6 +31,14 @@ class BookCreator < ApplicationService
 
   def book_search
     BookSearch.by_isbn(@isbn)
+  end
+
+  def set_book_attrs(book, response)
+    book.title = response.title
+    book.isbn = response.isbn
+    book.publisher = response.publisher
+    book.authors = response.authors
+    book.description = response.description
   end
 
   def attach_img(book, img_link)

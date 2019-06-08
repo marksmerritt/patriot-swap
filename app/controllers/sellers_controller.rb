@@ -2,8 +2,10 @@ class SellersController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    # TODO: Move to results page
-    @book = BookCreator.call(params[:q]) if params[:q]
+    if params[:q]
+      @books = BookSearch.by_title(params[:q])
+      flash[:error] = "No results" unless @books
+    end
   end
 end
 

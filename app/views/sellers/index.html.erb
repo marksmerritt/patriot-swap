@@ -5,31 +5,33 @@
   <%= text_field_tag :q, nil %>
 <% end %>
 
-<% if @book %>
-  <ul>
-    <li>
-      <%= image_tag @book.image %>
-    </li>
-    <li>
-      Title: <%= @book.title %> <br>    
-    </li>
-    <li>
-      ISBN: <%= @book.isbn %>    
-    </li>
-    <li>
-      Publisher: <%= @book.publisher %>    
-    </li>
-    <li>
-      Date Published: <%= @book.published_date %>
-    </li>
-    <li>
-      Authors: <%= @book.authors %>
-    </li>
-    <li>
-      Description: <%= @book.description %>
-    </li>
-    <li>
-      <%= link_to "Sell this book", new_book_listing_path(@book) %>
-    </li>
-  </ul>
+<% if @books %>
+  <% @books.each do |book| %>
+    <ul>
+      <li>
+        <%= image_tag book.image_link %>
+      </li>
+      <li>
+        Title: <%= book.title %> <br>    
+      </li>
+      <li>
+        ISBN: <%= book.isbn %>    
+      </li>
+      <li>
+        Publisher: <%= book.publisher %>    
+      </li>
+      <li>
+        Date Published: <%= book.published_date %>
+      </li>
+      <li>
+        Authors: <%= book.authors %>
+      </li>
+      <li>
+        Description: <%= book.description %>
+      </li>
+      <li>
+        <%= link_to "Sell this book", book_from_google_path(isbn: book.isbn) %>
+      </li>
+    </ul>
+  <% end %>
 <% end %>
