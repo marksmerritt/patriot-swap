@@ -4,12 +4,6 @@ FactoryBot.define do
     association :seller, factory: :user
     association :book
     price_cents { 1000 }
-
-    trait :reindex do 
-      after(:create) do |listing, _evaluator|
-        lisitng.reindex(refresh: true)
-      end
-    end
   end
 
   factory :second_listing, class: Listing do

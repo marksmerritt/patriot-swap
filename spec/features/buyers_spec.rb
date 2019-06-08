@@ -10,10 +10,6 @@ describe "navigation" do
       visit buyers_path
     end
 
-    it "is reachable" do 
-      visit buyers_path
-    end
-
     it "displays links to listings" do 
       click_link "listing-#{@listing1.id}-show"
       expect(current_path).to eq(book_listing_path(@listing1.book.friendly_id, @listing1.id))
