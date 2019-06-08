@@ -1,7 +1,8 @@
 <h1>Sellers#index</h1>
 
 <%= form_tag sellers_path, method: :get do %>
-  <%= text_field_tag :q, nil %>
+  <%= text_field_tag :q, nil, id: "book-search-field" %>
+  <%= submit_tag "Search", id: "book-search-submit" %>
 <% end %>
 
 <%= render partial: "books/book", collection: @books if @books %>

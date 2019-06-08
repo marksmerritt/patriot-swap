@@ -3,7 +3,7 @@ class SellersController < ApplicationController
   
   def index
     if params[:q]
-      @books = BookSearch.by_title(params[:q])
+      @books = BookSearch.by_isbn(params[:q])
       flash[:error] = "No results" unless @books
     end
   end

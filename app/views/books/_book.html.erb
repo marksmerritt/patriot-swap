@@ -21,6 +21,6 @@
     Description: <%= book.description %>
   </li>
   <li>
-    <%= link_to "Sell this book", book_from_google_path(isbn: book.isbn) %>
+    <%= link_to "Sell this book", book_from_google_path(isbn: book.isbn), id: "sell-book-#{book.isbn}" %>
   </li>
 </ul>

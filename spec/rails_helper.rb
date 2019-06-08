@@ -25,7 +25,7 @@ RSpec.configure do |config|
   config.before(:each) { DatabaseCleaner.start }
 
   config.before(:each) do 
-    stub_request(:get, %r{books.googleapis.com}).
+    stub_request(:get, %r{books.googleapis.com|googleapis.com/books|books.google.com}).
       to_return( status: 200, body: file_fixture("google_book.json").read)
 
     stub_request(:get, %r{maps.googleapis.com}).
