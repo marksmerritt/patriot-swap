@@ -1,7 +1,9 @@
 class Listing < ApplicationRecord
   Gutentag::ActiveRecord.call self
   include Taggable
-  
+    
+  searchkick  
+
   has_rich_text :body
   has_many_attached :images
 

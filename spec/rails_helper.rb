@@ -9,7 +9,10 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require "money-rails/test_helpers"
+
 require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+
 
 include Warden::Test::Helpers
 Warden.test_mode!

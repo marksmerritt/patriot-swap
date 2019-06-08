@@ -1,6 +1,8 @@
 class BuyersController < ApplicationController
   def index
-    @listings = Listing.includes(:book)
+    # TODO: N+1
+    query = params[:q].presence || "*"
+    @listings = Listing.search(query)
   end
 end
 

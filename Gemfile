@@ -47,3 +47,4 @@ gem 'geocoder', '~> 1.5', '>= 1.5.1'
 gem "aws-sdk-s3", require: false
 gem 'google-api-client', '~> 0.11'
 gem 'googlebooks', github: 'marksmerritt/GoogleBooks'
+gem 'searchkick', '~> 4.0', '>= 4.0.2'
