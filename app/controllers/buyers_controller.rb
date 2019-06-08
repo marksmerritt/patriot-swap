@@ -1,6 +1,6 @@
 class BuyersController < ApplicationController
   def index
-    @books = Book.all
+    @listings = Listing.includes(:book)
   end
 end
 

@@ -1,7 +1,7 @@
 <h1>Buyers#index</h1>
 
-<% @books.each do |book| %>
+<% @listings.each do |listing| %>
   <div>
-    <%= link_to book.title, book_path(book), id: "buy-book-#{book.id}" %>
+    <%= link_to listing.title, book_listing_path(listing.book, listing), id: "listing-#{listing.id}-show" %>
   </div>
 <% end %>

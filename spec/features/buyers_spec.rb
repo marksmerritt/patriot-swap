@@ -2,13 +2,15 @@ require "rails_helper"
 
 describe "navigation" do 
   describe "index" do 
-    it "allows a user to select a book to buy" do 
-      @book1 = FactoryBot.create(:book)
-      @book2 = FactoryBot.create(:second_book)
-
+    before do 
+      @listing1 = FactoryBot.create(:listing)
+      @listing2 = FactoryBot.create(:second_listing)
       visit buyers_path
-      click_link "buy-book-#{@book1.id}"
-      expect(current_path).to eq(book_path(@book1))
+    end
+
+    it "displays links to listings" do 
+      click_link "listing-#{@listing1.id}-show"
+      expect(current_path).to eq(book_listing_path(@listing1.book.friendly_id, @listing1.id))
     end
   end
 end
