@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   
   get "book_callbacks/:isbn", to: "book_callbacks#from_google", as: "book_from_google"
 
-  resources :chatrooms
+  resources :chatrooms do 
+    resource :chatroom_users
+  end
 end
