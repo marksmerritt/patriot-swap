@@ -6,6 +6,7 @@ class Listing < ApplicationRecord
 
   has_rich_text :body
   has_many_attached :images
+  has_many :conversations
 
   belongs_to :seller, class_name: "User"
   belongs_to :book
