@@ -3,7 +3,7 @@
     <div id=<%= "conversation-btw-#{listing.seller.id}-#{current_user.id}" %>>
       <%= conversation.messages.inspect %>
     </div>
-  <% else %>
+  <% elsif current_user != listing.seller %>
     <%= link_to "Start a convo", book_listing_conversations_path(listing.book, listing), method: :post, id: "create-#{listing.seller.id}-#{current_user.id}-conversation"   %>
   <% end %>
 </div>
