@@ -4,8 +4,15 @@ class MessagesController < ApplicationController
   def create
     @message = @conversation.messages.new(message_params)
     @message.user = current_user
-    @message.save
-    redirect_back(fallback_location: root_path)
+    if @message.save
+      ActionCable.server.broadcast "conversation_channel", body: @message.body,
+                                                           sender_id: @message.user.id,
+                                                           sender_name: @message.user.first_name,
+                                                           seller_id: @conversation.seller_id,
+                                                           buyer_id: @conversation.buyer_id
+
+                                                           
+    end
   end
 
 

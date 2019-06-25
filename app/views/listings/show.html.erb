@@ -1,4 +1,4 @@
-<%= render partial: "conversations/conversation", locals: { conversation: @conversation, listing: @listing } if current_user %>
+<%= render partial: "conversations/conversation", locals: { conversations: @conversations, listing: @listing } if current_user %>
 
 <h1><%= @listing.title %></h1>
 <p><%= @listing.body %></p>

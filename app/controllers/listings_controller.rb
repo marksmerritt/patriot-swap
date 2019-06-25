@@ -24,7 +24,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-    @conversation = @listing.conversations.between(@listing.seller, current_user).first
+    set_conversations
   end
 
 
@@ -36,5 +36,13 @@ class ListingsController < ApplicationController
 
   def set_book
     @book = Book.friendly.find(params[:book_id])
+  end
+
+  def set_conversations
+    if current_user == @listing.seller
+      @conversations = @listing.conversations
+    else
+      @conversations = @listing.conversations.between(@listing.seller, current_user)
+    end
   end
 end
