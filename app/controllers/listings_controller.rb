@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_book
+  before_action :set_book, except: [:show]
 
   def index 
     @listings = Listing.for_book(@book)
@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
     @listing.book = @book
 
     if @listing.save
-      redirect_to [@book, @listing], success: "Listing created successfully"
+      redirect_to @listing, success: "Listing created successfully"
     else
       render :new
     end

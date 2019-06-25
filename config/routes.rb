@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :courses
   
   resources :books do 
-    resources :listings do 
-      resources :conversations
+    resources :listings, shallow: true do 
+      resources :conversations, only: :create
     end
   end
 

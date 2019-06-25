@@ -51,7 +51,7 @@ describe "navigation" do
     let(:listing) { FactoryBot.create(:listing) }
 
     it "displays the correct attributes" do 
-      visit book_listing_path(listing.book, listing)
+      visit listing_path(listing)
       expect(page).to have_content(listing.title)
     end
   end

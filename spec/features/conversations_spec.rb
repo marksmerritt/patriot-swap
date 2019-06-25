@@ -9,7 +9,7 @@ describe "navigation" do
       @book = FactoryBot.create(:book)
       @listing = FactoryBot.create(:listing, book: @book, seller: @seller)
       login_as(@buyer, scope: :user)
-      visit book_listing_path(@book, @listing)
+      visit listing_path(@listing)
     end
 
     context "when a conversation has not been started" do 

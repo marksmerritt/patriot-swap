@@ -7,6 +7,6 @@
 
 <% @listings.each do |listing| %>
   <div>
-    <%= link_to listing.title, book_listing_path(listing.book, listing), id: "listing-#{listing.id}-show" %>
+    <%= link_to listing.title, listing_path(listing), id: "listing-#{listing.id}-show" %>
   </div>
 <% end %>

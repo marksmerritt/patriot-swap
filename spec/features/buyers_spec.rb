@@ -12,7 +12,7 @@ describe "navigation" do
 
     it "displays links to listings" do 
       click_link "listing-#{@listing1.id}-show"
-      expect(current_path).to eq(book_listing_path(@listing1.book.friendly_id, @listing1.id))
+      expect(current_path).to eq(listing_path(@listing1.id))
     end
 
     it "allows search" do 

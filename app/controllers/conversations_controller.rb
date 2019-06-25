@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
 
   def create 
     @conversation = Conversation.for_listing(@listing.id).between(@listing.seller.id, current_user.id).first_or_create
-    redirect_to book_listing_path(@listing.book, @listing)
+    redirect_to listing_path(@listing)
   end
 
 
