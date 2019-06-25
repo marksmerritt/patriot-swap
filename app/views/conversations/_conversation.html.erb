@@ -1,7 +1,17 @@
+<!-- TODO: Refactor -->
 <div>
   <% if conversation %>
     <div id=<%= "conversation-btw-#{listing.seller.id}-#{current_user.id}" %>>
-      <%= conversation.messages.inspect %>
+      <% conversation.messages.includes(:user).each do |message| %>
+        <div>
+          <%= message.user.first_name %>:
+          <%= message.body %>
+        </div>
+      <% end %>
+      <%= form_with model: [conversation, conversation.messages.new] do |f| %>
+        <%= f.text_area :body, id: "new-message-body" %>
+        <%= f.submit "Send", id: "send-message-btn" %>
+      <% end %>
     </div>
   <% elsif current_user != listing.seller %>
     <%= link_to "Start a convo", listing_conversations_path(listing), method: :post, id: "create-#{listing.seller.id}-#{current_user.id}-conversation"   %>
