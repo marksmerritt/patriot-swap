@@ -4,8 +4,7 @@ describe "navigation" do
   describe "new" do 
     let(:seller) { FactoryBot.create(:user) }
     let(:buyer) { FactoryBot.create(:second_user) }
-    let(:book) { FactoryBot.create(:book) }
-    let(:listing) { FactoryBot.create(:listing, book: book, seller: seller) }
+    let(:listing) { FactoryBot.create(:listing, seller: seller) }
 
     before do 
       login_as(buyer, scope: :user)
