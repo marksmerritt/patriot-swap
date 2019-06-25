@@ -12,4 +12,14 @@ FactoryBot.define do
     confirmed_at { Date.yesterday }
     association :location
   end
+
+  factory :second_user, class: User do
+    email { generate :email }
+    password { "helloworld" }
+    password_confirmation { "helloworld" }
+    first_name { "User" }
+    last_name { "Smith" }
+    confirmed_at { Date.yesterday }
+    association :location
+  end
 end

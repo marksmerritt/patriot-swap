@@ -1,3 +1,18 @@
+<!-- TODO: Do not show if current_user is the seller -->
+<!-- TODO: Move to partial -->
+<% if current_user %>
+  <div>
+    <% if @conversation %>
+      <div id=<%= "conversation-btw-#{@listing.seller.id}-#{current_user.id}" %>>
+        <%= @conversation.messages.inspect %>
+      </div>
+    <% else %>
+      <%= link_to "Start a convo", book_listing_conversations_path(@listing.book, @listing), method: :post, id: "create-#{@listing.seller.id}-#{current_user.id}-conversation"   %>
+    <% end %>
+  </div>
+<% end %>
+
+
 <h1><%= @listing.title %></h1>
 <p><%= @listing.body %></p>
 <h3><%= @listing.seller.last_name %></h3>

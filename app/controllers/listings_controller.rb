@@ -24,6 +24,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @conversation = @listing.conversations.between(@listing.seller, current_user).first
   end
 
 

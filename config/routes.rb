@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :courses
   
   resources :books do 
-    resources :listings
+    resources :listings do 
+      resources :conversations
+    end
   end
 
   resources :sellers, only: [:index]
