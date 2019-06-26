@@ -1,2 +1,10 @@
 <h1>Welcome#index</h1>
 
+<%= form_tag buyers_path, method: :get do %>
+  <%= text_field_tag :q, nil, id: "listing-search-field" %>
+  <%= submit_tag "Search", id: "listing-search-submit" %>
+<% end %>
+
+<%= link_to "Browse Listings", buyers_path, id: "browse-listings-link" %>
+
+
