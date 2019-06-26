@@ -1,0 +1,4 @@
+<%= form_with model: [conversation, conversation.messages.new], id: "new-message-form" do |f| %>
+  <%= f.text_area :body, id: "new-message-body-#{current_user.id}" %>
+  <%= f.submit "Send", id: "send-message-btn" %>
+<% end %>
