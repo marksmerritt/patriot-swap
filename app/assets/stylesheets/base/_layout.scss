@@ -1,0 +1,131 @@
+// Container for entire app
+.container {
+  max-width: 150rem;
+  margin: 1rem auto;
+}
+
+
+// Top navigation
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+
+  &__logo {
+    height: 3.25rem;
+    margin-left: 2rem;
+  }
+}
+
+.search {
+  flex: 0 0 40%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: 1px solid $color-grey-light-4;
+    padding: 1.3rem 2rem;
+    border-radius: 10rem;
+    width: 90%;
+    transition: all .2s;
+    margin-right: -3.5rem;
+
+    &:focus {
+      outline: none;
+      width: 100%;
+    }
+
+    &::-webkit-input-placeholder {
+      font-weight: 100;
+      color: $color-grey-light-4;
+    }
+  }
+
+  &__btn {
+    border: none;
+    background-color: $color-grey-light-2;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: $color-grey-light-4;
+  }
+}
+
+#listing-search-submit {
+  display: none;
+}
+
+.user-nav {
+  display: flex;
+  align-items: center;
+
+  & > * {
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    cursor: pointer;
+  }
+
+  &__icon-box {
+    position: relative;
+  }
+
+  &__icon {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: $color-grey-dark-2;
+  }
+
+  &__notification {
+    position: absolute;
+    top: -.5rem;
+    right: 1.3rem;
+
+    font-size: .8rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 50%;
+    background-color: $color-red;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__avatar {
+    height: 3.75;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  &__name {
+
+  }
+}
+
+
+// Page content container
+.main-container {
+  margin-top: 5rem;
+}
+

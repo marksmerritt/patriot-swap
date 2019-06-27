@@ -5,9 +5,29 @@ $font-primary: 'Rubik', sans-serif;
 
 //-------------- Colors --------------//
 
-$color-green: #00ad45;   
-$color-green-light: #5ecc62;
-$color-blue-light: #b3dcff;
+$color-primary: #00ad45;   
+$color-primary-light: #5ecc62;
+$color-primary-dark: #285943;
+
+$color-secondary: #008c9e;
+$color-secondary-light: #b3dcff;
+$color-secondary-dark: #005f6b;
+
 $color-off-white: #fffef5;
 
+$color-grey-light-1: #faf9f9;
+$color-grey-light-2: #f4f2f2;
+$color-grey-light-3: #f0eeee;
+$color-grey-light-4: #ccc;
+
+$color-grey-dark-1: #333;
+$color-grey-dark-2: #777;
+$color-grey-dark-3: #999;
 $color-black: #1d2d35;
+
+$color-red: #f54242;
+
+
+//-------------- Box Shadows --------------//
+
+$shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);

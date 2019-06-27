@@ -49,3 +49,4 @@ gem "aws-sdk-s3", require: false
 gem 'google-api-client', '~> 0.11'
 gem 'googlebooks', github: 'marksmerritt/GoogleBooks'
 gem 'searchkick', '~> 4.0', '>= 4.0.2'
+gem 'gravatar_image_tag', '~> 1.2'

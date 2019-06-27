@@ -12,10 +12,12 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <%= render "shared/flash" if flash.present? %>
       <%= render "shared/nav" %>
-      <%= yield %>
+      <main class="main-container">
+        <%= yield %>  
+      </main>      
     </div>
   </body>
 </html>

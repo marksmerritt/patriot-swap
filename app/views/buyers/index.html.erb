@@ -1,10 +1,5 @@
 <h1>Buyers#index</h1>
 
-<%= form_tag buyers_path, method: :get do %>
-  <%= text_field_tag :q, params[:q], id: "listing-search-field" %>
-  <%= submit_tag "Search", id: "listing-search-submit" %>
-<% end %>
-
 <% if params[:q] %>
   <h4>Results for "<%= params[:q] %>"</h4>
 <% end %>
