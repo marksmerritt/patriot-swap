@@ -23,12 +23,15 @@
     text-align: center;
     color: #fff;
     margin-bottom: 3rem;
+    backface-visibility: hidden;
 
     &--main {
       display: block;
       font-size: 6rem;
       font-weight: 400;
       letter-spacing: .3rem;
+      
+      animation: moveInLeft 1s ease-out;
     }
 
     &--sub {
@@ -36,6 +39,8 @@
       font-size: 3rem;
       font-weight: 400;
       letter-spacing: .5rem;
+
+      animation: moveInRight 1s ease-out;
     }
   }
 }
