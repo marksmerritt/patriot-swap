@@ -1,7 +1,15 @@
 //= require actiontext
 
+//------- Base --------//
 @import "base/variables";
 @import "base/resets";
 @import "base/typography";
 @import "base/mixins";
 @import "base/layout";
+
+//------- Componenets --------//
+@import "components/buttons";
+
+
+//------- Pages --------//
+@import "welcome";
