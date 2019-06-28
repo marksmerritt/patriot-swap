@@ -7,9 +7,12 @@
 
 // Top navigation
 .navigation {
+  position: relative;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid $color-grey-light-3;
   
   font-size: 1.4rem;
   height: 7rem;

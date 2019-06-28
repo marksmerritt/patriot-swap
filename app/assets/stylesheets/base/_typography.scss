@@ -4,3 +4,25 @@ body {
   font-size: 1.6rem;
   line-height: 1.6;
 }
+
+%heading {
+  font-weight: 400;
+  color: $color-grey-dark-1;
+}
+
+.heading-1 {
+  @extend %heading;
+}
+
+.heading-2 {
+  @extend %heading; 
+}
+
+.heading-3 {
+  @extend %heading;
+}
+
+.heading-4 {
+  @extend %heading;
+  font-size: 2rem;
+}
