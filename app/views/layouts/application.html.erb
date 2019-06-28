@@ -15,9 +15,12 @@
     <div class="container">
       <%= render "shared/flash" if flash.present? %>
       <%= render "shared/nav" %>
+
       <main class="main-container">
         <%= yield %>  
       </main>      
+
+      <%= render "shared/footer" %>
     </div>
   </body>
 </html>

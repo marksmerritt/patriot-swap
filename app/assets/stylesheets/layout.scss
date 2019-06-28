@@ -1,11 +1,11 @@
-// Container for entire app
+//------------- App Container -------------//
 .container {
   max-width: 150rem;
   margin: 0 auto;
 }
 
 
-// Top navigation
+//------------- Top Navigation -------------//
 .navigation {
   position: relative;
   z-index: 100;
@@ -127,7 +127,70 @@
 }
 
 
-// Page content container
+//------------- Footer -------------//
+.footer {
+  background-color: $color-grey-dark-1;
+  padding: 2rem;
+  margin-top: 25rem;
+}
+
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 2rem;
+  align-items: center;
+  list-style: none;
+
+  &__link:link,
+  &__link:visited {
+    display: block;
+    font-size: 1.4rem;
+    color: #fff;
+    padding: 1.5rem;
+    transition: all .2s;
+    text-align: center;
+  }
+
+  &__link:hover,
+  &__link:active {
+    background-color: rgba(#fff, .05);
+  }
+}
+
+.footer-copyright {
+  font-size: 1.4rem;
+  color: $color-grey-light-4;
+  margin: 6rem auto 1rem;
+  text-align: center;
+  width: 70%;
+}
+
+
+
+//------------- Main Content Container -------------//
 .main-container {
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
