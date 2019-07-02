@@ -1,11 +1,7 @@
-<h1>Buyers#index</h1>
-
-<% if params[:q] %>
-  <h4>Results for "<%= params[:q] %>"</h4>
-<% end %>
-
-<% @listings.each do |listing| %>
-  <div>
-    <%= link_to listing.title, listing_path(listing), id: "listing-#{listing.id}-show" %>
-  </div>
-<% end %>
+<section class="listings-section">
+  <% if @listings.any? %>
+    <%= render partial: "listings/listing", collection: @listings %>
+  <% else %>
+    <p>No Results</p>
+  <% end %>
+</section>

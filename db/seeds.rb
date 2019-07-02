@@ -1,12 +1,14 @@
 require 'faker'
 
 # Reset
+Message.delete_all
+Conversation.delete_all
 Listing.delete_all
 Book.delete_all
 User.delete_all
 Location.delete_all
 
-# Create Locations
+# ------------- Create Locations -------------
 
 location = Location.create!(
   street: "4400 University Dr",
@@ -18,7 +20,7 @@ location = Location.create!(
 @locations = Location.all
 puts "#{Location.count} locations created"
 
-# Create Users
+# ------------- Create Users -------------
 
 admin_user = User.new(
   first_name: "Mark",
@@ -51,7 +53,7 @@ end
 @users = User.all
 puts "#{User.count} users created"
 
-# Create Books
+# ------------- Create Books -------------
 
 20.times do 
   Book.create!(
@@ -64,16 +66,26 @@ end
 puts "#{Book.count} books created"
 
 
-# Create Listings
+# ------------- Tags for listings -------------
+
+TAGS = ["IT100", "IT200", "IT300", "IT400"].freeze
+
+
+
+# ------------- Create Listings -------------
 
 100.times do 
-  Listing.create!(
+  listing = Listing.new(
     title: Faker::Lorem.sentence,
     body: Faker::Lorem.paragraph,
     seller: @users.sample,
     price_cents: Faker::Number.number(4),
-    book: @books.sample
+    book: @books.sample, 
+    condition: Faker::Number.between(0, 3)
   )
+
+  listing.tag_names << TAGS.sample
+  listing.save! 
 end
 
 @listings = Listing.all

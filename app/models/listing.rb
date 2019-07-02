@@ -1,4 +1,5 @@
 class Listing < ApplicationRecord
+  enum condition: { brand_new: 0, good: 1, fair: 2, poor: 3 }
   Gutentag::ActiveRecord.call self
   include Taggable
     

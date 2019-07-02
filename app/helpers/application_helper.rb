@@ -15,20 +15,20 @@ module ApplicationHelper
               )
   end
 
-  def display_icon(svg_name, style_class = "")
+  def display_icon(icon: svg_name, style: "", id: "")
     path = asset_path('sprite.svg') 
-    svg_name = svg_name.prepend("#icon-")
+    icon = icon.prepend("#icon-")
     
-    content_tag(:svg, class: style_class) do 
-      content_tag(:use, nil, 'xlink:href' => path + svg_name)
+    content_tag(:svg, class: style, id: id) do 
+      content_tag(:use, nil, 'xlink:href' => path + icon)
     end
   end
 
-  def display_avatar(user, style_class = "", size = 40)
+  def display_avatar(user: user, style: "", size: 40)
     if user.avatar.attached?
-      image_tag(user.avatar.variant(resize: "#{size}x#{size}!"), alt: "User avatar", class: style_class)
+      image_tag(user.avatar.variant(resize: "#{size}x#{size}!"), alt: "User avatar", class: style)
     else
-      gravatar_image_tag("you@example.com", alt: "User avatar", class: style_class, gravatar: { size: size })
+      gravatar_image_tag("you@example.com", alt: "User avatar", class: style, gravatar: { size: size })
     end
   end
 end

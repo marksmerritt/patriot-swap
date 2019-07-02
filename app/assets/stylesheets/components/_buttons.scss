@@ -1,13 +1,12 @@
 .btn:link,
 .btn:visited {
   display: inline-block;
-  text-transform: uppercase;
   transition: all .2s;
+  text-align: center;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+  cursor: pointer;
 }
 
 .btn:active {
@@ -21,3 +20,10 @@
   padding: 1.5rem 4rem;
   border-radius: 100px;
 }
+
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+  cursor: pointer;
+}
+  
