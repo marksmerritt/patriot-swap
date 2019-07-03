@@ -5,7 +5,14 @@
       <span class="hero__heading-primary--sub">Buy.Sell.Trade</span>
     </h1>
     
-    <%= link_to "Browse Listings", buyers_path, class: "btn btn-white", id: "browse-listings-link" %>
+    <div class="hero__btn-box">
+      <div class="hero__btn">
+        <%= link_to "Browse Listings", buyers_path, class: "btn btn-white", id: "browse-listings-link" %>  
+      </div>
+      <div class="hero__btn">
+        <%= link_to "Sell Your Book", sellers_path, class: "btn btn-white-inv", id: "sellers-link" %>
+      </div>
+    </div>
   </div>
 </section>
 

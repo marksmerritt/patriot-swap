@@ -45,6 +45,16 @@
       animation: moveInRight 1s ease-out;
     }
   }
+  
+  &__btn-box {
+    display: flex;
+  }
+
+  &__btn {
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
 }
 
 
