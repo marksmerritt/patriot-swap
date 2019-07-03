@@ -13,7 +13,6 @@
     <p>1.2 mi away</p>
   </div>
   <div class="listing__tags">
-    Tags: 
     <% listing.tag_names.each do |tag| %>
       <%= link_to tag, buyers_path(q: tag), class: "listing__tag" %>
     <% end %>

@@ -84,7 +84,7 @@ TAGS = ["IT100", "IT200", "IT300", "IT400"].freeze
     condition: Faker::Number.between(0, 3)
   )
 
-  listing.tag_names << TAGS.sample
+  rand(1..3).times { listing.tag_names << TAGS.sample }
   listing.save! 
 end
 
