@@ -2,7 +2,7 @@
   <%= image_tag "book-placeholder.jpg", alt: "Listing image", class: "listing__img" %>
   <h5 class="listing__price">$<%= listing.price %></h5>
   <div class="listing__book-title">
-    <p><%= listing.book.title %></p>
+    <p><%= listing.title %></p>
   </div>
   <div class="listing__seller">
     <%= display_avatar(user: listing.seller, style: "listing__seller-img", size: 30) %>
