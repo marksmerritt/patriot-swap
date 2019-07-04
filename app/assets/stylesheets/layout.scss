@@ -4,7 +4,7 @@
   margin: 0 auto;
   overflow: hidden;
 
-  @media only screen and (min-width: $bp-largest) {
+  @media only screen and (min-width: 1200px) {
     border-left: 1px solid $color-grey-light-3;
     border-right: 1px solid $color-grey-light-3;
   }

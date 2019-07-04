@@ -17,28 +17,33 @@
 .btn-white {
   background-color: #fff;
   color: $color-grey-dark-2;
-  padding: 1.5rem 4rem;
-  border-radius: 100px;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
-    cursor: pointer;
-  }
 }
 
 .btn-white-inv {
   background-color: transparent;
   color: #fff;
-  border: 2.5px solid #fff;
-  padding: 1.25rem 4rem;
-  border-radius: 100px;
 
   &:hover {
     background-color: #fff;
     color: $color-grey-dark-2;
+  }
+}
+
+
+.btn-white,
+.btn-white-inv {
+  padding: 1.25rem 4rem;
+  border: 2.5px solid #fff;
+  border-radius: 100px;
+
+  &:hover {
     transform: translateY(-2px);
     box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 800px) {
+    padding: 1.25rem 2rem;
+  }
 }
+
