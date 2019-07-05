@@ -5,6 +5,7 @@ document.addEventListener("turbolinks:load", () => {
     startDelay: 1000,
     strings: ["Buy Textbooks", "Sell Textbooks", "Trade Textbooks"],
     backSpeed: 40,
-    typeSpeed: 80
+    typeSpeed: 80,
+    loop: true
   });
 });
