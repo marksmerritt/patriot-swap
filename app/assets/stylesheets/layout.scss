@@ -115,6 +115,10 @@
 
   &__icon-box {
     position: relative;
+
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
   }
 
   &__icon {
@@ -140,20 +144,21 @@
     align-items: center;
   }
 
+  &__fb-btn {
+    height: 3.2rem;
+    width: 20rem;
+  }
+
   &__avatar {
     height: 3.75;
     border-radius: 50%;
     margin-right: 1rem;
   }
-
-  &__name {
-
-  }
-
+  
   @media only screen and (max-width: 900px) {
-    display: none;
+    margin: 0 auto;
   }
-
+  
 }
 
 //------------- Hamburger Menu -------------//

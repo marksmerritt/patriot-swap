@@ -10,29 +10,18 @@
     <% end %>
     <%= f.submit "Submit", id: "listing-search-submit" %>
   <% end %>
-  
-  <div class="toggle">
-    <input type="checkbox">
-
-    <span></span>
-    <span></span>
-    <span></span>
-
-    <ul class="toggle-menu">
-      <li>
-        <%= link_to "Sign In", new_user_session_path, id: "signin-link--mobile" %>
-      </li>
-      <li>
-        <%= link_to "Sign Up", new_user_registration_path, id: "signup-link--mobile" %>
-      </li>
-    </ul>
-  </div>
 
   <div class="user-nav">
-    <div class="user-nav__icon-box">
-      <%= display_icon(icon: "bell", style: "user-nav__icon") %>
-      <span class="user-nav__notification">7</span>
-    </div>
+    <% if current_user %>
+      <div class="user-nav__icon-box">
+        <%= display_icon(icon: "bell", style: "user-nav__icon") %>
+        <span class="user-nav__notification">7</span>
+      </div>
+    <% else %>
+      <%= link_to user_facebook_omniauth_authorize_path do %>
+        <%= image_tag "fb-login.png", class: "user-nav__fb-btn" %>
+      <% end %>
+    <% end %>
 
     <div class="user-nav__icon-box">
       <% if current_user %>
@@ -50,5 +39,22 @@
         <% end %>
       </div>
     <% end %>
+  </div>
+
+  <div class="toggle">
+    <input type="checkbox">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+    <ul class="toggle-menu">
+      <li>
+        <%= link_to "Sign In", new_user_session_path, id: "signin-link--mobile" %>
+      </li>
+      <li>
+        <%= link_to "Sign Up", new_user_registration_path, id: "signup-link--mobile" %>
+      </li>
+    </ul>
   </div>
 </nav>
