@@ -22,3 +22,4 @@ import "controllers"
 require("trix")
 require("@rails/actiontext")
 require("packs/flash_messages")
+require("packs/typed")
