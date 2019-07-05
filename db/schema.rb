@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_221507) do
+ActiveRecord::Schema.define(version: 2019_07_05_013833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 2019_07_01_221507) do
     t.text "authors", default: [], array: true
     t.text "description"
     t.index ["slug"], name: "index_books_on_slug", unique: true
+  end
+
+  create_table "connected_accounts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "access_token"
+    t.string "access_token_secret"
+    t.string "refresh_token"
+    t.datetime "expires_at"
+    t.text "auth"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_connected_accounts_on_user_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -169,7 +183,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_221507) do
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "location_id", null: false
+    t.bigint "location_id"
     t.integer "role", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -179,6 +193,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_221507) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "connected_accounts", "users"
   add_foreign_key "conversations", "listings"
   add_foreign_key "listings", "books"
   add_foreign_key "messages", "conversations"

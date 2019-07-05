@@ -38,6 +38,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise', '~> 4.6', '>= 4.6.2'
 gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'money-rails', '~>1.12'
 gem 'gutentag', '~> 2.5'

@@ -5,6 +5,7 @@ Message.delete_all
 Conversation.delete_all
 Listing.delete_all
 Book.delete_all
+ConnectedAccount.delete_all
 User.delete_all
 Location.delete_all
 

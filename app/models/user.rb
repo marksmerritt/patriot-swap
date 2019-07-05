@@ -7,10 +7,11 @@ class User < ApplicationRecord
   delegate :longitude, :latitude, to: :location
 
   has_one_attached :avatar
+  has_many :connected_accounts
   has_many :listings, foreign_key: "seller_id"
   has_many :messages
 
-  belongs_to :location
+  belongs_to :location, optional: true
 
   accepts_nested_attributes_for :location
 

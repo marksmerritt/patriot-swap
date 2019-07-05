@@ -19,10 +19,11 @@ document.addEventListener("turbolinks:load", () => {
 
     var type = flashMessage.data("type");
     var message = flashMessage.data("message");
-    
-    console.log(type);
 
     switch(type) {
+      case "notice":
+        toastr.success(message);
+        break;
       case "alert":
         toastr.success(message);
         break;
