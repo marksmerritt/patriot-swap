@@ -25,3 +25,23 @@
     </li>
   <% end %>
 </ul>
+
+<% if current_user %>
+  <div class="chatbox">
+    <div class="chatlogs">
+      <div class="chat">
+        <%= display_avatar(user: @listing.seller, style: "chat__photo") %>
+        <p class="chat__message chat__message--seller">What's, up</p>
+      </div>
+      <div class="chat">
+        <%= display_avatar(user: current_user, style: "chat__photo") %>
+        <p class="chat__message chat__message--current-user">Yo!!!!</p>
+      </div>
+    </div>
+
+    <div class="chat-form">
+      <textarea placeholder="Type your message..." class="chat-form__message-box"></textarea>
+      <button class="chat-form__btn">Send</button>
+    </div>
+  </div>
+<% end %>
