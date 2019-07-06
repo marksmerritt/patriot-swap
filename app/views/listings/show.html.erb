@@ -1,4 +1,8 @@
-<%= render partial: "conversations/conversation", locals: { conversations: @conversations, listing: @listing } if current_user %>
+<% if current_user %>
+  <%= render partial: "conversations/conversation", locals: { conversations: @conversations, listing: @listing } %>
+<% else %>
+  <%= link_to "Login to send #{@listing.seller.first_name} a message.", new_user_session_path, id: "convo-sign-in" %>
+<% end %>
 
 <h1><%= @listing.title %></h1>
 <p><%= @listing.body %></p>

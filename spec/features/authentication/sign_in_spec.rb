@@ -1,3 +1,4 @@
+# TODO: Refactor
 require "rails_helper"
 
 describe "navigation" do 
@@ -17,6 +18,20 @@ describe "navigation" do
       click_button "submit-btn"
 
       expect(page).to have_link("logout-link")
+    end
+  end
+
+  describe "when a user signs in" do 
+    it "redirects to previous location" do
+      @user = FactoryBot.create(:user) 
+      @listing = FactoryBot.create(:listing)
+      visit listing_path(@listing)
+      click_link "convo-sign-in"
+      fill_in "email-field", with: @user.email 
+      fill_in "password-field", with: "helloworld"
+      click_button "submit-btn"
+
+      expect(current_path).to eq(listing_path(@listing))
     end
   end
 end
