@@ -56,6 +56,11 @@
       background-color: $color-secondary;
       order: -1;
     }
+
+    &--live {
+      color: $color-grey-dark-2;
+      border: 1px solid currentColor;
+    }
   }
 }
 

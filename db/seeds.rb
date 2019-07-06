@@ -24,9 +24,9 @@ puts "#{Location.count} locations created"
 # ------------- Create Users -------------
 
 admin_user = User.new(
-  first_name: "Mark",
-  last_name: "Merritt",
-  email: "mark@example.com",
+  first_name: "Admin",
+  last_name: "User",
+  email: "admin@example.com",
   password: "helloworld", 
   password_confirmation: "helloworld",
   location: @locations.sample
@@ -36,6 +36,20 @@ admin_user.skip_confirmation!
 admin_user.save!
 
 puts "Admin User created"
+
+member_user = User.new(
+  first_name: "Member",
+  last_name: "User",
+  email: "member@example.com",
+  password: "helloworld", 
+  password_confirmation: "helloworld",
+  location: @locations.sample
+)
+
+member_user.skip_confirmation!
+member_user.save!
+
+puts "Member User created"
 
 10.times do 
   u = User.new(
