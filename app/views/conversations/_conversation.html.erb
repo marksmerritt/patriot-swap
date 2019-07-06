@@ -1,25 +1,16 @@
-<div>
-  <% if conversations.any? %>
-    <% conversations.each do |conversation| %>
-      <div class="chatbox">
-        <div class="chatlogs" id=<%= "conversation-btw-#{conversation.seller_id}-#{conversation.buyer_id}" %>>
-          <% conversation.messages.includes(:user).each do |message| %>
-            <div class="chat">
-              <% if message.user == current_user %>
-                <%= display_avatar(user: current_user, style: "chat__photo") %>
-                <p class="chat__message chat__message--current-user"><%= message.body %></p>
-              <% else %>
-                <%= display_avatar(user: @listing.seller, style: "chat__photo") %>
-                <p class="chat__message chat__message--seller"><%= message.body %></p>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        <%= render partial: "messages/form", locals: { conversation: conversation } %>
+<% if conversations.any? %>
+  <% conversations.each do |conversation| %>
+    <div class="chatbox">
+      <div class="chatlogs" id=<%= "conversation-btw-#{conversation.seller_id}-#{conversation.buyer_id}" %>>
+        <% conversation.messages.includes(:user).each do |message| %>
+            <%= render partial: "messages/message", locals: { message: message, listing: @listing } %>
+        <% end %>
       </div>
-    <% end %>
-  <% elsif current_user != listing.seller %>
-    <%= link_to "Start a convo", listing_conversations_path(listing), method: :post, id: "create-#{listing.seller.id}-#{current_user.id}-conversation" %>
+      <%= render partial: "messages/form", locals: { conversation: conversation } %>
+    </div>
   <% end %>
-</div>
+<% elsif current_user != listing.seller %>
+  <%= link_to "Start a convo", listing_conversations_path(listing), method: :post, id: "create-#{listing.seller.id}-#{current_user.id}-conversation" %>
+<% end %>
+
 
