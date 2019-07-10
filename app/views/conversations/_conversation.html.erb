@@ -1,16 +1,30 @@
-<% if conversations.any? %>
-  <% conversations.each do |conversation| %>
-    <div class="chatbox">
-      <div class="chatlogs" id=<%= "conversation-btw-#{conversation.seller_id}-#{conversation.buyer_id}" %>>
-        <% conversation.messages.includes(:user).each do |message| %>
-            <%= render partial: "messages/message", locals: { message: message, listing: @listing } %>
-        <% end %>
-      </div>
-      <%= render partial: "messages/form", locals: { conversation: conversation } %>
-    </div>
+<!-- TODO: MAJOR REFACTOR -->
+<div class="chatbox">
+  <% if conversation.messages.any? %>
+    <h3 class="chatbox__title">
+      <% if current_user != @listing.seller %>
+        Your messages with <%= @listing.seller.first_name %>
+      <% else %>
+        Your messages with <%= User.where(id: conversation.buyer_id).first.first_name %>
+      <% end %>
+    </h3>
+  <% elsif current_user != @listing.seller %>
+    <h3 class="chatbox__title">
+      Interested? Send <%= @listing.seller.first_name %> a message
+    </h3>
   <% end %>
-<% elsif current_user != listing.seller %>
-  <%= link_to "Start a convo", listing_conversations_path(listing), method: :post, id: "create-#{listing.seller.id}-#{current_user.id}-conversation" %>
-<% end %>
+  
+  <div class="chatlogs" id=<%= "conversation-btw-#{conversation.seller_id}-#{conversation.buyer_id}" %>>
+    <% conversation.messages.includes(:user).each do |message| %>
+      <%= render partial: "messages/message", locals: { message: message, listing: @listing } %>
+    <% end %>
+  </div>
+</div>
+
+<%= render partial: "messages/form", locals: { conversation: conversation } unless ((current_user == @listing.seller) && (conversation.messages.empty?)) %>
+
+
+
+
 
 

@@ -49,7 +49,32 @@ member_user = User.new(
 member_user.skip_confirmation!
 member_user.save!
 
-puts "Member User created"
+member2_user = User.new(
+  first_name: "Member2",
+  last_name: "User",
+  email: "member2@example.com",
+  password: "helloworld", 
+  password_confirmation: "helloworld",
+  location: @locations.sample
+)
+
+member2_user.skip_confirmation!
+member2_user.save!
+
+member3_user = User.new(
+  first_name: "Member3",
+  last_name: "User",
+  email: "member3@example.com",
+  password: "helloworld", 
+  password_confirmation: "helloworld",
+  location: @locations.sample
+)
+
+member3_user.skip_confirmation!
+member3_user.save!
+
+puts "3 Member Users created"
+
 
 10.times do 
   u = User.new(

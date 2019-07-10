@@ -24,7 +24,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-    set_conversations
+    set_conversations if current_user
   end
 
 
@@ -43,6 +43,18 @@ class ListingsController < ApplicationController
       @conversations = @listing.conversations
     else
       @conversations = @listing.conversations.between(@listing.seller, current_user)
+      if @conversations.empty? 
+        @conversations = create_conversation
+      end
     end
+  end
+
+  def create_conversation
+    conversation = @listing.conversations.create(
+      listing: @listing,
+      seller_id: @listing.seller.id,
+      buyer_id: current_user.id
+    )
+    @conversations = @listing.conversations.between(@listing.seller, current_user)
   end
 end

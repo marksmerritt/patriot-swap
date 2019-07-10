@@ -8,18 +8,19 @@ describe "navigation" do
 
     before do 
       login_as(buyer, scope: :user)
-      visit listing_path(listing)
     end
 
     context "when a conversation has not been started" do 
-      it "has a link to start a conversation" do 
-        expect { click_link "create-#{seller.id}-#{buyer.id}-conversation" }.to change{ Conversation.count }.by(1)
+      it "creates a conversation" do 
+        expect { visit listing_path(listing) }.to change{ Conversation.count }.by(1)
       end
     end
 
     context "when a conversation has been started" do 
+      let(:convo) { FactoryBot.create(:conversation, listing_id: listing.id, seller_id: seller.id, buyer_id: buyer.id) }
+      
       before do 
-        click_link "create-#{seller.id}-#{buyer.id}-conversation" 
+        visit listing_path(convo.listing)
       end
 
       it "displays the conversation" do 

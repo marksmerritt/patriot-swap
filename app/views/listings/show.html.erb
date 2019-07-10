@@ -1,27 +1,31 @@
-<% if current_user %>
-  <%= render partial: "conversations/conversation", locals: { conversations: @conversations, listing: @listing } %>
-<% else %>
-  <%= link_to "Login to send #{@listing.seller.first_name} a message.", new_user_session_path, id: "convo-sign-in" %>
-<% end %>
+<div class="listing-show-container">
+  <div class="listing-details__container">
+    <h1 class="listing-details__title"><%= @listing.title %></h1>
+    <p class="listing-details__book-title">Book Title: <%= @listing.book.title %></p>
+    <p class="listing-details__isbn">ISBN: <%= @listing.book.isbn %></p>
+    <p class= "listing-details__body">Description: <%= @listing.body %></p>
+    <p class="listing-details__seller-name">Seller: <%= @listing.seller.first_name %></p>
 
-<h1><%= @listing.title %></h1>
-<p><%= @listing.body %></p>
-<h3><%= @listing.seller.last_name %></h3>
+    <p class="listing-details__price">Price: $<%= @listing.price %></p>
+    <p class="listing-details__tags"><%= @listing.tag_names %></p>
+    
+    <!-- TODO: Show an area instead of actual location! -->
+    <%= static_google_map(long: @listing.seller.longitude, lat: @listing.seller.latitude, style: "listing-details__map") %>  
+  
+    <ul>
+      <% @listing.images.each do |img| %>
+        <li>
+          <%= image_tag(img, class: "listing-details__img") %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-<p>$<%= @listing.price %></p>
-<p><%= @listing.book.title %></p>
-<p><%= @listing.tag_names %></p>
-
-<div class="row">
-  <div class="col-md-12">
-    <%= static_google_map(@listing.seller.longitude, @listing.seller.latitude) %>
+  <div class="conversation-container">
+    <% if current_user %>
+      <%= render partial: "conversations/conversation", collection: @conversations, locals: { listing: @listing } %>
+    <% else %>
+      <%= link_to "Login to send #{@listing.seller.first_name} a message.", new_user_session_path, id: "convo-sign-in" %>
+    <% end %>
   </div>
 </div>
-
-<ul>
-  <% @listing.images.each do |img| %>
-    <li>
-      <%= image_tag img %>
-    </li>
-  <% end %>
-</ul>
