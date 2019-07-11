@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
     <div class="container">
       <%= render "shared/flash" if flash.present? %>
       <%= render "shared/nav" %>
