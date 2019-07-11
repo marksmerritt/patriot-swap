@@ -29,6 +29,7 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
 
   config.active_record.verbose_query_logs = true
+  config.active_job.queue_adapter = :inline
 
   config.assets.debug = true
 

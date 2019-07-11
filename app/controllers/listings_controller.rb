@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing = Listing.find(params[:id])
+    @listing = Listing.with_attached_images.find(params[:id])
     set_conversations if current_user
   end
 

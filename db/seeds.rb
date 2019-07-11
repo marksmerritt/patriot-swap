@@ -114,7 +114,9 @@ TAGS = ["IT100", "IT200", "IT300", "IT400"].freeze
 
 # ------------- Create Listings -------------
 
-100.times do 
+puts "Creating listings with images..."
+
+25.times do 
   listing = Listing.new(
     title: Faker::Lorem.sentence,
     body: Faker::Lorem.paragraph,
@@ -123,9 +125,15 @@ TAGS = ["IT100", "IT200", "IT300", "IT400"].freeze
     book: @books.sample, 
     condition: Faker::Number.between(0, 3)
   )
+  rand(1..4).times do
+    listing.tag_names << TAGS.sample
+  end
 
-  rand(1..3).times { listing.tag_names << TAGS.sample }
   listing.save! 
+
+  rand(1..3).times do |i|  
+    listing.images.attach(io: File.open("app/assets/images/book-placeholder.jpg"), filename: "book-placeholder-#{i}.jpg", content_type: 'image/jpg')
+  end
 end
 
 @listings = Listing.all
