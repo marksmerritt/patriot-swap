@@ -1,5 +1,29 @@
 <div class="listing-show-container">
   <div class="listing-details__container">
+
+
+
+
+    <ul class="listing-details__images">
+      <% @listing.images.each_with_index do |img,i| %>
+        <li>
+          <%= image_tag(img, class: "listing-details__img", id: "listing-details__img--#{i}") %>
+        </li>
+
+        <div class="modal" id=<%= "listing-details__img-modal--#{i}" %>>
+          <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <%= image_tag(img, class: "modal__img") %>
+          </div>
+        </div>
+      <% end %>
+    </ul>
+    
+    
+
+
+
+
     <h1 class="listing-details__title"><%= @listing.title %></h1>
     <p class="listing-details__book-title">Book Title: <%= @listing.book.title %></p>
     <p class="listing-details__isbn">ISBN: <%= @listing.book.isbn %></p>
@@ -11,14 +35,6 @@
     
     <!-- TODO: Show an area instead of actual location! -->
     <%= static_google_map(long: @listing.seller.longitude, lat: @listing.seller.latitude, style: "listing-details__map") %>  
-  
-    <ul>
-      <% @listing.images.each do |img| %>
-        <li>
-          <%= image_tag(img, class: "listing-details__img") %>
-        </li>
-      <% end %>
-    </ul>
   </div>
 
   <div class="conversation-container">

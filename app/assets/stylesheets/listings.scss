@@ -40,11 +40,47 @@
     width: 40rem;
   }
 
-  &__img {
+  &__images {
+    list-style: none;
+    display: flex;
 
+    li:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+
+  &__img {
+    display: inline-block;
+    width: 10rem;
+    border: 2px solid transparent;
+
+    &:hover{
+      cursor: pointer;
+      border: 2px solid $color-primary;
+    }
   }
 }
 
 .conversation-container {
   flex: 0 0 30%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
