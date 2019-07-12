@@ -1,10 +1,10 @@
 import Typed from "typed.js"
 
-let controller = ($("body").data("controller")) == "welcome";
-let action = ($("body").data("action")) == "index";
+document.addEventListener("turbolinks:load", () => {
+  let controller = ($("body").data("controller")) == "welcome";
+  let action = ($("body").data("action")) == "index";
 
-if (controller && action){
-  document.addEventListener("turbolinks:load", () => {
+  if (controller && action){
     var typed = new Typed("#typed", {
       startDelay: 1000,
       strings: ["Buy", "Sell", "Trade"],
@@ -12,5 +12,5 @@ if (controller && action){
       typeSpeed: 100,
       loop: true
     });
-  });
-}
+  }
+});
