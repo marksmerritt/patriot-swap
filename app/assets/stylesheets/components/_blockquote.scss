@@ -1,0 +1,19 @@
+.blockquote {
+  background: #f9f9f9;
+  border-left: 1rem solid $color-primary;
+  padding: 2rem;
+  quotes: "\201C""\201D""\2018""\2019";
+
+  &:before {
+    color: $color-primary;
+    content: open-quote;
+    font-size: 6rem;
+    line-height: 1rem;
+    margin-right: 1rem;
+    vertical-align: -2rem;
+  }
+
+  p {
+    display: inline;
+  }
+}

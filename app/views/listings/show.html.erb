@@ -2,13 +2,13 @@
   <div class="listing-details__container">
 
 
+    <!---------------------- Listing Images ---------------------->
 
-
-    <ul class="listing-details__images">
+    <div class="listing-details__images">
       <% @listing.images.each_with_index do |img,i| %>
-        <li>
+        <figure class="listing-details__img-container">
           <%= image_tag(img, class: "listing-details__img", id: "listing-details__img--#{i}") %>
-        </li>
+        </figure class="listing-details__img-container">
 
         <div class="modal" id=<%= "listing-details__img-modal--#{i}" %>>
           <div class="modal-content">
@@ -17,25 +17,69 @@
           </div>
         </div>
       <% end %>
-    </ul>
+    </div>
     
+
+    <!---------------------- Listing Overview ---------------------->
+
+    <div class="listing-details__overview">
+      <%= display_avatar(user: @listing.seller, style: "listing-details__seller-avatar") %>
+      <h3 class="listing-details__title"><%= @listing.seller.display_name %></h3>
+
+      <div class="listing-details__seller-stars">
+        <% 5.times do  %>
+          <%= display_icon(icon: "star", style: "listing-details__star-icon") %>
+        <% end %>
+      </div>  
+
+      <div class="listing-details__location">
+        <%= display_icon(icon: "location-pin", style: "listing-details__location-icon") %>
+        <span class="listing-details__seller-location">Fairfax, VA</span>
+      </div>
+    </div>
     
 
+    <!---------------------- Listing Details ---------------------->
 
-
-
-    <h1 class="listing-details__title"><%= @listing.title %></h1>
-    <p class="listing-details__book-title">Book Title: <%= @listing.book.title %></p>
-    <p class="listing-details__isbn">ISBN: <%= @listing.book.isbn %></p>
-    <p class= "listing-details__body">Description: <%= @listing.body %></p>
-    <p class="listing-details__seller-name">Seller: <%= @listing.seller.first_name %></p>
-
-    <p class="listing-details__price">Price: $<%= @listing.price %></p>
-    <p class="listing-details__tags"><%= @listing.tag_names %></p>
-    
-    <!-- TODO: Show an area instead of actual location! -->
-    <%= static_google_map(long: @listing.seller.longitude, lat: @listing.seller.latitude, style: "listing-details__map") %>  
+    <div class="listing-details">
+      <div class="listing-details__main">
+        
+        <div class="blockquote">
+          <p><%= @listing.body %></p>   
+        </div>
+        
+        <ul class="listing-details__list">
+          <li class="listing-details__list-item">
+            <%= display_icon(icon: "chevron-right", style: "listing-details__chevron") %>
+            <span class="listing-details__list-item-header">Book Title:</span> <%= @listing.book.title %>
+          </li>
+          <li class="listing-details__list-item">
+            <%= display_icon(icon: "chevron-right", style: "listing-details__chevron") %>
+            <span class="listing-details__list-item-header">ISBN:</span> <%= @listing.book.isbn %>
+          </li>
+          <li class="listing-details__list-item">
+            <%= display_icon(icon: "chevron-right", style: "listing-details__chevron") %>  
+            <span class="listing-details__list-item-header">Price:</span> $<%= @listing.price %>
+          </li>
+          <li class="listing-details__list-item">
+            <%= display_icon(icon: "chevron-right", style: "listing-details__chevron") %>
+            <span class="listing-details__list-item-header">Tags:</span> 
+            <div class="listing-details__tags">
+              <% @listing.tag_names.each do |tag| %>
+                <%= link_to tag, buyers_path(q: tag), class: "listing-details__tag" %>
+              <% end %>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="listing-details__sub">
+        <%= static_google_map(long: @listing.seller.longitude, lat: @listing.seller.latitude, style: "listing-details__map") %>  
+      </div>
+    </div>
   </div>
+
+
+  <!---------------------- Listing Conversation ---------------------->
 
   <div class="conversation-container">
     <% if current_user %>

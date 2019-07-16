@@ -1,9 +1,10 @@
-<div class="chat">  
+<div class="chat"> 
   <% if message.user == current_user %>
-    <%= display_avatar(user: current_user, style: "chat__photo") %>
     <p class="chat__message chat__message--current-user"><%= message.body %></p>
+    <p class="sent-at">
+      <%= time_ago_in_words(message.created_at) %> ago
+    </p> 
   <% else %>
-    <%= display_avatar(user: listing.seller, style: "chat__photo") %>
     <p class="chat__message chat__message--seller"><%= message.body %></p>
   <% end %>
 </div>

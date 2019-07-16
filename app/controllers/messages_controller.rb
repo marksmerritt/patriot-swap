@@ -9,7 +9,8 @@ class MessagesController < ApplicationController
                                                            sender_id: @message.user.id,
                                                            sender_name: @message.user.first_name,
                                                            seller_id: @conversation.seller_id,
-                                                           buyer_id: @conversation.buyer_id
+                                                           buyer_id: @conversation.buyer_id,
+                                                           current_user_id: current_user.id
 
                                                            
     end

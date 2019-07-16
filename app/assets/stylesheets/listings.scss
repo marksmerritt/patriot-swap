@@ -2,38 +2,126 @@
 
 .listing-show-container {
   margin-top: 3rem;
-  padding: 3rem;
+  padding: 2rem;
   display: flex;
 }
 
 .listing-details {
+  display: flex;
+  margin-top: 3rem;
+
+  &__main {
+    flex: 0 0 60%;
+    background-color: #fff;
+    border: 1px solid $color-grey-light-3;
+    margin-right: 3rem;
+    padding: 3rem;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 3rem 0;
+
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }  
+
+  &__chevron {
+    margin-right: 1rem;
+    display: inline-block;
+    width: 2.2rem;
+    height: 2.2rem;
+    fill: $color-primary;
+  }
+
+  &__list-item-header {
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  &__sub {
+    flex: 1;
+  }
+
+  &__map {
+    max-width: 100%;
+  }
 
   &__container {
     flex: 1;
   }
 
+  &__overview {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color-grey-light-3;
+  }
+  
+  &__seller-avatar {
+    border-radius: 50%;
+  }
+
   &__title {
-
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem;
   }
 
-  &__body {
-
+  &__seller-stars {
+    margin-right: auto;
+    display: flex;
   }
 
-  &__seller-name {
-
+  &__star-icon,
+  &__location-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: $color-primary;
   }
 
-  &__price {
-
+  &__location-icon {
+    margin-right: .5rem;
   }
 
-  &__book-title {
+  &__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    margin-right: 3rem;
+  }
 
+  &__seller-location {
+    color: $color-primary;
   }
 
   &__tags {
+    
+  }
 
+  &__tag {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: $color-primary;
+    border: 1px solid currentColor;
+    border-radius: 15px;
+    padding: .3rem 1rem;
+
+    &:hover {
+      border: 1px solid $color-primary;
+      color: #fff;
+      background-color: $color-primary;
+    }
   }
   
   &__map {
@@ -49,9 +137,13 @@
     }
   }
 
+  &__img-container {
+    flex-basis: 25%;
+  }
+
   &__img {
-    display: inline-block;
-    width: 10rem;
+    display: block;
+    width: 100%;
     border: 2px solid transparent;
 
     &:hover{
@@ -62,7 +154,9 @@
 }
 
 .conversation-container {
+  border: 1px solid $color-grey-light-3;
   flex: 0 0 30%;
+  margin: 2rem 0 2rem 2rem;
 }
 
 
