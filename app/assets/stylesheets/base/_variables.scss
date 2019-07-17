@@ -28,9 +28,10 @@ $color-black: #1d2d35;
 $color-red: #f54242;
 
 
-//-------------- Box Shadows --------------//
+//-------------- Box Shadows/Borders --------------//
 
 $shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+$grey-line: 1px solid $color-grey-light-4;
 
 
 //-------------- Responsive Breakpoints --------------//

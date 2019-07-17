@@ -5,9 +5,9 @@
   &__title {
     text-align: center;
     padding: 1rem 0 2rem 0;
-    color: $color-grey-dark-3;
+    color: $color-primary-dark;
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 600;
   }
 
   &__title-emphasized {
@@ -16,7 +16,7 @@
 }
 
 .chatlogs {
-  border: 2px solid $color-grey-light-1;
+  border: $grey-line;
   padding: 1rem;
   width: 100%;
   max-height: 35rem;
@@ -55,6 +55,7 @@
     font-size: 1.5rem;
 
     &--seller {
+      background-color: $color-primary;
       border: 2px solid $color-primary;
     }
 
@@ -84,7 +85,7 @@
     background: #fbfbfb;
     width: 100%;
     height: 8rem;
-    border: 1px solid $color-grey-light-4;
+    border: $grey-line;
     border-radius: 3px;
     resize: none;
     padding: 1rem;

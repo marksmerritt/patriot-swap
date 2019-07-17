@@ -82,10 +82,15 @@
   <!---------------------- Listing Conversation ---------------------->
 
   <div class="conversation-container">
-    <% if current_user %>
+    <% if (current_user == @listing.seller) && (!@listing.has_messages?) %>
+      No Messages Yet
+    <% elsif current_user %>
       <%= render partial: "conversations/conversation", collection: @conversations, locals: { listing: @listing } %>
     <% else %>
-      <%= link_to "Login to send #{@listing.seller.first_name} a message.", new_user_session_path, id: "convo-sign-in" %>
+      <div class="unauth-container">
+        <%= image_tag("patriot-bg.png", class: "unauth-img") %>
+        <%= link_to "Login to send #{@listing.seller.first_name} a message", new_user_session_path, class: "convo-login-btn", id: "convo-sign-in" %>    
+      </div>
     <% end %>
   </div>
 </div>

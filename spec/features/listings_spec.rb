@@ -48,11 +48,5 @@ describe "navigation" do
   end
 
   describe "show" do 
-    let(:listing) { FactoryBot.create(:listing) }
-
-    it "displays the correct attributes" do 
-      visit listing_path(listing)
-      expect(page).to have_content(listing.title)
-    end
   end
 end

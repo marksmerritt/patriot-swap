@@ -19,4 +19,11 @@ class Listing < ApplicationRecord
   def self.for_book(book)
     where(book: book)
   end
+
+  def has_messages?
+    conversations.each do |conversation|
+      return true if conversation.messages.any?
+    end
+    false
+  end
 end
