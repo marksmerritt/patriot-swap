@@ -22,6 +22,10 @@ class Listing < ApplicationRecord
     where(book: book)
   end
 
+  def self.expired
+    where("updated_at <= ?", 30.days.ago)
+  end
+
   # TODO: Refactor
   def has_messages?
     conversations.each do |conversation|
