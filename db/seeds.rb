@@ -114,7 +114,7 @@ TAGS = ["IT100", "IT200", "IT300", "IT400"].freeze
 
 # ------------- Create Listings -------------
 
-puts "Creating listings with images..."
+puts "Creating active listings with images..."
 
 25.times do 
   listing = Listing.new(
@@ -137,4 +137,8 @@ puts "Creating listings with images..."
 end
 
 @listings = Listing.all
+
+# Inactivate some listings
+5.times { @listings.sample.inactive! }
+
 puts "#{Listing.count} listings created"
