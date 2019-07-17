@@ -24,7 +24,7 @@ module ApplicationHelper
     end
   end
 
-  def display_avatar(user: user, style: "", size: 40)
+  def display_avatar(user:, style: "", size: 40)
     if user.avatar.attached?
       image_tag(user.avatar.variant(resize: "#{size}x#{size}!"), alt: "User avatar", class: style)
     else

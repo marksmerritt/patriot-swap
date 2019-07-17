@@ -1,7 +1,6 @@
 require_relative 'boot'
 
 require "rails"
-# Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
 require "active_record/railtie"
@@ -24,11 +23,13 @@ module PatriotSwap
     config.generators do |g|
       g.system_tests = nil
       g.test_framework :rspec
-      # g.helper_specs false
       g.controller_specs false
       g.view_specs false
       g.routing_specs false
       g.request_specs false
+      g.jobs false
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
