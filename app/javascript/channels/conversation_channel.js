@@ -13,7 +13,7 @@ consumer.subscriptions.create("ConversationChannel", {
     let style = (data.current_user_id == data.seller_id ? "seller" : "current-user");
     $(`#conversation-btw-${data.seller_id}-${data.buyer_id}`).append(`<div class="chat">
                                                                         <p class="chat__message chat__message--${style}">${data.body}</p>
-                                                                        <p class="sent-at">Just Now</p>
+                                                                        <p class="sent-at">Sent</p>
                                                                       </div>`);
     $(`#new-message-body-${data.sender_id}`).val("");
   }
