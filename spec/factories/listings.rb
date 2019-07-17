@@ -14,4 +14,13 @@ FactoryBot.define do
     association :book, factory: :second_book
     price_cents { 2000 }
   end
+
+  factory :inactive_listing, class: Listing do
+    title { "Some Inactive Title" }
+    condition { "brand_new" }
+    association :seller, factory: :user
+    association :book, factory: :second_book
+    price_cents { 2000 }
+    status { "inactive" }
+  end
 end

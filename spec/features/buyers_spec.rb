@@ -5,6 +5,7 @@ describe "navigation" do
     before do 
       @listing1 = FactoryBot.create(:listing)
       @listing2 = FactoryBot.create(:second_listing)
+      @inactive_listing = FactoryBot.create(:inactive_listing)
       Listing.reindex
       Listing.searchkick_index.refresh
       visit buyers_path
@@ -20,6 +21,10 @@ describe "navigation" do
       click_button "listing-search-submit", visible: false
 
       expect(page).to have_content(@listing1.title).and have_no_content(@listing2.title)
+    end
+
+    it "only displays active listings" do 
+      expect(page).to_not have_content(@inactive_listing.title)
     end
   end
 end

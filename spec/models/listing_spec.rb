@@ -5,6 +5,12 @@ RSpec.describe Listing, type: :model do
     it "can be created with valid attributes" do 
       expect{ FactoryBot.create(:listing) }.to change{ Listing.count }.by(1)
     end
+
+    let(:listing) { FactoryBot.create(:listing) }
+
+    it "is set to active by default" do 
+      expect(listing.status).to eq("active")
+    end
   end
 
   describe "validation" do 

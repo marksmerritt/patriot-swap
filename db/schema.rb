@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_05_013833) do
+ActiveRecord::Schema.define(version: 2019_07_17_184050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_07_05_013833) do
     t.integer "price_cents", default: 0, null: false
     t.bigint "book_id", null: false
     t.integer "condition", default: 0
+    t.integer "status", default: 0
     t.index ["book_id"], name: "index_listings_on_book_id"
   end
 
