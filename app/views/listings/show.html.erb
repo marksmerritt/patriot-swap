@@ -58,6 +58,10 @@
             <span class="listing-details__list-item-header">ISBN:</span> <%= @listing.book.isbn %>
           </li>
           <li class="listing-details__list-item">
+            <%= display_icon(icon: "chevron-right", style: "listing-details__chevron") %>
+            <span class="listing-details__list-item-header">Condition:</span> <%= @listing.condition.humanize %>
+          </li>
+          <li class="listing-details__list-item">
             <%= display_icon(icon: "chevron-right", style: "listing-details__chevron") %>  
             <span class="listing-details__list-item-header">Price:</span> $<%= @listing.price %>
           </li>

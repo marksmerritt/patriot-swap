@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:title, :body, :price_cents, :tags_as_string, images: [])
+    params.require(:listing).permit(:title, :body, :condition, :price_cents, :tags_as_string, images: [])
   end
 
   def set_book

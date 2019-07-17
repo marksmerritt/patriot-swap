@@ -12,7 +12,7 @@ class Listing < ApplicationRecord
   belongs_to :seller, class_name: "User"
   belongs_to :book
 
-  validates_presence_of :title
+  validates_presence_of :title, :condition
 
   monetize :price_cents, numericality: { greater_than: 0, less_than: 1000 }
 
@@ -20,6 +20,7 @@ class Listing < ApplicationRecord
     where(book: book)
   end
 
+  # TODO: Refactor
   def has_messages?
     conversations.each do |conversation|
       return true if conversation.messages.any?

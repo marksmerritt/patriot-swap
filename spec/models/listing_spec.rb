@@ -14,6 +14,11 @@ RSpec.describe Listing, type: :model do
       listing.title = nil
       expect(listing).to_not be_valid
     end
+
+    it "has a condition" do 
+      listing.condition = nil
+      expect(listing).to_not be_valid
+    end
     
     it "has a monetized price" do 
       is_expected.to monetize(:price).with_currency(:usd)
