@@ -1,4 +1,9 @@
+div[id^="chatbox-btw-"] {
+  display: none;
+}
+
 .chatbox {
+  display: block;
   padding: 2rem;
   margin: 2rem auto;
 
@@ -19,6 +24,7 @@
   border: $grey-line;
   padding: 1rem;
   width: 100%;
+  height: 35rem;
   max-height: 35rem;
   background: #fff;
   overflow-x: hidden;

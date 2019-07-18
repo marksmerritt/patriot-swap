@@ -1,5 +1,5 @@
 <!-- TODO: MAJOR REFACTOR -->
-<div class="chatbox">
+<div class="chatbox" id=<%= "chatbox-btw-#{conversation.seller_id}-#{conversation.buyer_id}" %>>
   <% if conversation.messages.any? %>
     <h3 class="chatbox__title">
       <% if current_user != @listing.seller %>
@@ -20,9 +20,9 @@
       <%= render partial: "messages/message", locals: { message: message, listing: @listing } %>
     <% end %>
   </div>
-</div>
 
-<%= render partial: "messages/form", locals: { conversation: conversation } unless ((current_user == @listing.seller) && (conversation.messages.empty?)) %>
+  <%= render partial: "messages/form", locals: { conversation: conversation } unless ((current_user == @listing.seller) && (conversation.messages.empty?)) %>
+</div>
 
 
 

@@ -223,6 +223,41 @@
   }
 }
 
+.conversation {
+
+  &__avatars {
+    align-self: flex-start;
+    display: flex;
+  }
+
+  &__avatar-box {
+    margin-top: 3rem;
+    margin-left: 3rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: $color-grey-light-3;
+    }
+  }
+
+  &__avatar {
+    display: block;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  &__avatar-display_name {
+    margin-top: .3rem;
+    display: block;
+    font-size: 1.3rem;
+    color: $color-primary-dark;
+    font-weight: 500;
+  }
+}
+
 .unauth-container {
   padding: 3rem;
   display: flex;
@@ -253,6 +288,16 @@
   }
 }
 
+.convo-show-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  &__active {
+    padding: .5rem;
+    background-color: $color-grey-light-3;
+  }
+}
 
 
 

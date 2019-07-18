@@ -88,6 +88,20 @@
   <div class="conversation-container">
     <% if (current_user == @listing.seller) && (!@listing.has_messages?) %>
       No Messages Yet
+    <% elsif current_user && current_user == @listing.seller %> 
+      <div class="conversation__avatars">
+        <% @conversations.each do |conversation| %>
+          
+            <div class="conversation__avatar-box">
+              <%= link_to "#", class: "convo-show-link", id: "convo-link-btw-#{conversation.seller_id}-#{conversation.buyer_id}", data: { seller_id: conversation.seller_id, buyer_id: conversation.buyer_id } do %>
+                <%= display_avatar(user: conversation.buyer, style: "conversation__avatar") %>
+                <span class="conversation__avatar-display_name"><%= conversation.buyer.display_name %></span>
+            <% end %>
+            </div>
+        <% end %>
+      </div>
+      
+      <%= render partial: "conversations/conversation", collection: @conversations, locals: { listing: @listing } %>
     <% elsif current_user %>
       <%= render partial: "conversations/conversation", collection: @conversations, locals: { listing: @listing } %>
     <% else %>

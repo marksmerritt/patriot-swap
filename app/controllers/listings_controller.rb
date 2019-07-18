@@ -38,6 +38,7 @@ class ListingsController < ApplicationController
     @book = Book.friendly.find(params[:book_id])
   end
 
+  # TODO: Move to service 
   def set_conversations
     if current_user == @listing.seller
       @conversations = @listing.conversations

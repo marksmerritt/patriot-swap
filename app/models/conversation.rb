@@ -12,4 +12,8 @@ class Conversation < ApplicationRecord
   def self.between(seller_id, buyer_id) 
     where(seller_id: seller_id, buyer_id: buyer_id)
   end
+
+  def buyer
+    User.find(buyer_id)
+  end
 end

@@ -28,7 +28,7 @@ class Listing < ApplicationRecord
 
   # TODO: Refactor
   def has_messages?
-    conversations.each do |conversation|
+    conversations.includes(:messages).each do |conversation|
       return true if conversation.messages.any?
     end
     false
