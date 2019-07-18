@@ -31,4 +31,16 @@ module ApplicationHelper
       gravatar_image_tag("you@example.com", alt: "User avatar", class: style, gravatar: { size: size })
     end
   end
+
+  def display_feature_image(listing)
+    img = if listing.images.attached?
+            listing.images.first
+          elsif listing.book.image.attached?
+            listing.book.image
+          else
+            nil # TODO: Add placeholder
+          end
+
+    image_tag(img.variant(resize_to_limit: [250, 150]), alt: 'Listing image', class: 'listing__img') if img
+  end
 end

@@ -1,0 +1,37 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7rem;
+  padding: 2rem;
+  
+  a,
+  .current {
+    margin: 0 2rem;
+    border: 1px solid $color-primary;
+    padding: .5rem 1rem;
+  }
+
+  a {
+    color: $color-primary;
+  }
+}
+
+.previous_page {
+
+}
+
+.current {
+  background-color: $color-primary;
+  color: #fff;
+  margin-right: 5rem;
+  font-style: normal;
+}
+
+.next_page {
+
+}
+
+.disabled {
+  display: none;
+}

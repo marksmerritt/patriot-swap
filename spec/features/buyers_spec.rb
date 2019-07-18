@@ -20,7 +20,7 @@ describe "navigation" do
       fill_in "listing-search-field", with: @listing1.title
       click_button "listing-search-submit", visible: false
 
-      expect(page).to have_content(@listing1.title).and have_no_content(@listing2.title)
+      expect(page).to have_content(@listing1.book.title).and have_no_content(@listing2.title)
     end
 
     it "only displays active listings" do 
