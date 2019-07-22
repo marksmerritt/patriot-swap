@@ -31,6 +31,10 @@
     margin-bottom: 2rem;
     color: $color-grey-dark-3;
     letter-spacing: .1rem;
+
+    &--sub {
+      margin-top: 5rem;
+    }
   }
 
   &__group {
