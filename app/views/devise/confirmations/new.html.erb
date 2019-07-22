@@ -4,6 +4,8 @@
       <h3 class="form__heading">Resend confirmation instructions</h3>
       
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "form" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        
         <div class="form__group">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form__input", id: "email-field", placeholder: "Email" %>
           <%= f.label :email, class: "form__label" %>
