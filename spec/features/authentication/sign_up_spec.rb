@@ -17,10 +17,10 @@ describe "naviation" do
       fill_in "password-confirmation-field", with: "helloworld"
 
       # Location
-      fill_in "street-field", with: "4400 University Dr"
-      fill_in "city-field", with: "Fairfax"
-      fill_in "state-field", with: "VA"
-      fill_in "zip-field", with: "22032"
+      # fill_in "street-field", with: "4400 University Dr"
+      # fill_in "city-field", with: "Fairfax"
+      # fill_in "state-field", with: "VA"
+      # fill_in "zip-field", with: "22032"
 
       expect{ click_button "submit-btn" }.to change{ User.count }.by(1)
     end

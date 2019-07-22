@@ -1,0 +1,12 @@
+.form {
+  &__avatar-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__avatar-text {
+    margin-left: 1rem;
+    font-size: 1.3rem;
+    color: $color-primary-dark;
+  }
+}

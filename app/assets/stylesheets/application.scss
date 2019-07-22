@@ -17,7 +17,9 @@
 @import "components/pagination";
 
 //------- Devise --------//
+@import "devise/form";
 @import "devise/signin";
+@import "devise/signup";
 
 //------- Pages --------//
 @import "layout";
