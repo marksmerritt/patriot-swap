@@ -15,6 +15,7 @@ consumer.subscriptions.create("ConversationChannel", {
                                                                         <p class="chat__message chat__message--${style}">${data.body}</p>
                                                                         <p class="sent-at">Sent</p>
                                                                       </div>`);
+    $(".chatlogs__no-msgs").css("display", "none");
     $(`#new-message-body-${data.sender_id}`).val("");
   }
 });

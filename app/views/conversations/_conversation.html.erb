@@ -16,8 +16,15 @@
   
   
   <div class="chatlogs" id=<%= "conversation-btw-#{conversation.seller_id}-#{conversation.buyer_id}" %>>
-    <% conversation.messages.includes(:user).each do |message| %>
-      <%= render partial: "messages/message", locals: { message: message, listing: @listing } %>
+    <% if conversation.messages.any? %>
+      <% conversation.messages.includes(:user).each do |message| %>
+        <%= render partial: "messages/message", locals: { message: message, listing: @listing } %>
+      <% end %>
+    <% else %>
+      <div class="chatlogs__no-msgs">
+        <%= display_icon(icon: "chat", style: "chatlogs__no-msgs-icon") %>
+        <span class="chatlogs__no-msgs-text">No Messages yet</span>
+      </div>
     <% end %>
   </div>
 

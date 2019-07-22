@@ -21,6 +21,7 @@ div[id^="chatbox-btw-"] {
 }
 
 .chatlogs {
+  position: relative;
   border: $grey-line;
   padding: 1rem;
   width: 100%;
@@ -29,6 +30,26 @@ div[id^="chatbox-btw-"] {
   background: #fff;
   overflow-x: hidden;
   overflow-y: scroll;
+
+  &__no-msgs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__no-msgs-icon {
+    fill: $color-grey-light-3;
+    width: 70%;
+  }
+
+  &__no-msgs-text {
+    color: $color-grey-light-4;
+  }
 }
 
 .chatlogs::-webkit-scrollbar {
