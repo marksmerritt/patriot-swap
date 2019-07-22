@@ -7,13 +7,13 @@
     <div class="listing-details__images">
       <% @listing.images.each_with_index do |img,i| %>
         <figure class="listing-details__img-container">
-          <%= image_tag(img, class: "listing-details__img", id: "listing-details__img--#{i}") %>
+          <%= image_tag(thumbnail_img(img), class: "listing-details__img", id: "listing-details__img--#{i}") %>
         </figure class="listing-details__img-container">
 
         <div class="modal" id=<%= "listing-details__img-modal--#{i}" %>>
           <div class="modal-content">
             <span class="closeBtn">&times;</span>
-            <%= image_tag(img, class: "modal__img") %>
+            <%= image_tag(full_img(img), class: "modal__img") %>
           </div>
         </div>
       <% end %>

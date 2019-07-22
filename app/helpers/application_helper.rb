@@ -1,13 +1,4 @@
 module ApplicationHelper
-  def flash_class(level)
-    case level
-      when "notice" then "alert-dark"
-      when "success" then "alert-success"
-      when "error" then "alert-danger"
-      when "alert" then "alert-warning"
-    end
-  end
-
   def static_google_map(long:, lat:, style:)
     image_tag(
                 "http://maps.googleapis.com/maps/api/staticmap?center=#{lat},#{long}&markers=#{lat},#{long}&zoom=12&size=640x400&key=#{ENV["GOOGLE_KEY"]}",  
@@ -26,7 +17,7 @@ module ApplicationHelper
 
   def display_avatar(user:, style: "", size: 40)
     if user.avatar.attached?
-      image_tag(user.avatar.variant(resize: "#{size}x#{size}!"), alt: "User avatar", class: style)
+      image_tag(user.avatar.variant(resize: "#{size}x#{size}!").processed, alt: "User avatar", class: style)
     else
       gravatar_image_tag("you@example.com", alt: "User avatar", class: style, gravatar: { size: size })
     end
@@ -34,13 +25,21 @@ module ApplicationHelper
 
   def display_feature_image(listing)
     img = if listing.images.attached?
-            listing.images.first
+            thumbnail_img(listing.images.first)
           elsif listing.book.image.attached?
-            listing.book.image
+            thumbnail_img(listing.book.image)
           else
             nil # TODO: Add placeholder
           end
 
-    image_tag(img.variant(resize_to_limit: [250, 150]), alt: 'Listing image', class: 'listing__img') if img
+    image_tag(img, alt: 'Listing image', class: 'listing__img') if img
+  end
+
+  def thumbnail_img(img)
+    img.variant(resize: "200x150!").processed
+  end
+
+  def full_img(img)
+    img.variant(resize: "600x450!").processed
   end
 end
