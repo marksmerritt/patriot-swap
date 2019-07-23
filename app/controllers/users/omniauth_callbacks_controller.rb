@@ -1,5 +1,5 @@
 #TODO: Add specs
-
+require "open-uri"
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     service = ConnectedAccount.where(provider: auth.provider, uid: auth.uid).first
@@ -11,11 +11,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         access_token: auth.credentials.token
       )
     else
-      users_name = auth.info.name.split(" ")
+      user_fullname = auth.info.name.split(" ")
       user = User.new(
         email: auth.info.email,
-        first_name: users_name[0],
-        last_name: users_name[1],
+        first_name: user_fullname[0],
+        last_name: user_fullname[1],
         password: Devise.friendly_token[0,20]
       )
       user.skip_confirmation!
@@ -27,6 +27,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         expires_at: Time.at(auth.credentials.expires_at),
         access_token: auth.credentials.token
       )
+
+      # TODO: Move to background job
+      profile_picture = open(auth.info.image)
+      user.avatar.attach(io: profile_picture, filename: "avatar#{user.id}.jpg", content_type: profile_picture.content_type)
     end
 
     sign_in_and_redirect user, event: :authentication
