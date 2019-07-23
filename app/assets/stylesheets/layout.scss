@@ -158,6 +158,22 @@
       margin: 0 auto;
     }
   }
+
+  &__sell-btn {
+    padding: .2rem 1.3rem;
+    color: $color-primary;
+    border: 2px solid currentColor;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    letter-spacing: .1rem;
+
+    &:hover,
+    &:active {
+      color: #fff;
+      background-color: $color-primary;
+      border: 2px solid currentColor;
+    }
+  }
   
   @media only screen and (max-width: 900px) {
     margin: 0 auto;

@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="user-nav">
+    <div class="user-nav__icon-box">
+      <%= link_to "Sell", sellers_path, class: "user-nav__sell-btn", id: "nav-sell-btn" %>
+    </div>
+    
     <% if current_user %>
       <div class="user-nav__icon-box">
         <%= display_icon(icon: "bell", style: "user-nav__icon") %>

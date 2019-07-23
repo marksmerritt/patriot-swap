@@ -1,26 +1,24 @@
-<ul>
-  <li>
-    <%= image_tag book.image_link %>
-  </li>
-  <li>
-    Title: <%= book.title %> <br>    
-  </li>
-  <li>
-    ISBN: <%= book.isbn %>    
-  </li>
-  <li>
-    Publisher: <%= book.publisher %>    
-  </li>
-  <li>
-    Date Published: <%= book.published_date %>
-  </li>
-  <li>
-    Authors: <%= book.authors %>
-  </li>
-  <li>
-    Description: <%= book.description %>
-  </li>
-  <li>
-    <%= link_to "Sell this book", book_from_google_path(isbn: book.isbn), id: "sell-book-#{book.isbn}" %>
-  </li>
-</ul>
+<div class="book-container">
+  <div class="book-details__img-container">
+    <%= image_tag book.image_link, class: "book-details__img" %>
+    <%= link_to "Sell this book", book_from_google_path(isbn: book.isbn), class: "book-details__sell-btn", id: "sell-book-#{book.isbn}" %>
+  </div>
+    
+  <ul class="book-details__list">
+    <li class="book-details__list-item">
+      Title: <%= book.title %>
+    </li>
+    <li class="book-details__list-item">
+      ISBN: <%= book.isbn %>    
+    </li>
+    <li class="book-details__list-item">
+      Publisher: <%= book.publisher %>    
+    </li>
+    <li class="book-details__list-item">
+      Date Published: <%= book.published_date %>
+    </li>
+    <li class="book-details__list-item">
+      Authors: <%= book.authors %>
+    </li>
+  </ul>
+</div>

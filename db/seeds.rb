@@ -11,15 +11,15 @@ Location.delete_all
 
 # ------------- Create Locations -------------
 
-location = Location.create!(
-  street: "4400 University Dr",
-  city: "Fairfax",
-  state: "VA", 
-  zip: "22030"
-)
+# location = Location.create!(
+#   street: "4400 University Dr",
+#   city: "Fairfax",
+#   state: "VA", 
+#   zip: "22030"
+# )
 
-@locations = Location.all
-puts "#{Location.count} locations created"
+# @locations = Location.all
+# puts "#{Location.count} locations created"
 
 # ------------- Create Users -------------
 
@@ -29,7 +29,7 @@ admin_user = User.new(
   email: "admin@example.com",
   password: "helloworld", 
   password_confirmation: "helloworld",
-  location: @locations.sample
+  # location: @locations.sample
 )
 
 admin_user.skip_confirmation!
@@ -43,7 +43,7 @@ member_user = User.new(
   email: "member@example.com",
   password: "helloworld", 
   password_confirmation: "helloworld",
-  location: @locations.sample
+  # location: @locations.sample
 )
 
 member_user.skip_confirmation!
@@ -55,7 +55,7 @@ member2_user = User.new(
   email: "member2@example.com",
   password: "helloworld", 
   password_confirmation: "helloworld",
-  location: @locations.sample
+  # location: @locations.sample
 )
 
 member2_user.skip_confirmation!
@@ -67,7 +67,7 @@ member3_user = User.new(
   email: "member3@example.com",
   password: "helloworld", 
   password_confirmation: "helloworld",
-  location: @locations.sample
+  # location: @locations.sample
 )
 
 member3_user.skip_confirmation!
@@ -83,7 +83,7 @@ puts "3 Member Users created"
     email: Faker::Internet.email,
     password: "helloworld", 
     password_confirmation: "helloworld",
-    location: @locations.sample
+    # location: @locations.sample
   )
 
   u.skip_confirmation!
@@ -125,7 +125,7 @@ puts "Creating active listings with images..."
     book: @books.sample, 
     condition: Faker::Number.between(0, 3)
   )
-  rand(1..4).times do
+  rand(1..3).times do
     listing.tag_names << TAGS.sample
   end
 

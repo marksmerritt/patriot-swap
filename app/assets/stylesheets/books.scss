@@ -1,3 +1,43 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.book-container {
+  box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+.book-details {
+  display: flex;
+  
+  &__img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img {
+
+  }
+
+  &__list {
+    list-style: none;
+    margin-left: 2rem;
+    margin-top: 1rem;
+  }
+
+  &__list-item {
+    padding: .5rem;
+  }
+
+  &__sell-btn {
+    margin-left: 1.5rem;
+    padding: .2rem 1rem;
+    color: $color-primary;
+    border: 1px solid currentColor;
+
+    &:hover,
+    &:active {
+      border: 1px solid $color-primary;
+      background-color: $color-primary;
+      color: #fff;
+    }
+  }
+}

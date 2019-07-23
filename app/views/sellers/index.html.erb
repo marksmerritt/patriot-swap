@@ -1,8 +1,17 @@
-<h1>Sellers#index</h1>
-
-<%= form_tag sellers_path, method: :get do %>
-  <%= text_field_tag :q, nil, id: "book-search-field" %>
-  <%= submit_tag "Search", id: "book-search-submit" %>
-<% end %>
-
-<%= render partial: "books/book", collection: @books if @books %>
+<div class="sellers">
+  <h3 class="sellers__heading">
+    Enter your book's ISBN...
+    <span class="sellers__manual-link"></span>
+  </h3>
+  
+  <%= form_tag sellers_path, method: :get, class: "sellers__search-form" do %>
+    <%= text_field_tag :q, nil, autofocus: true, class: "sellers__search-field", id: "book-search-field", value: params[:q] %>
+    <%= submit_tag "Search", class: "sellers__search-btn", id: "book-search-submit" %>
+  <% end %>
+  
+  <div class="sellers__search-results">
+    <%= render partial: "books/book", collection: @books if @books %>  
+  </div>
+  
+</div>
+  
