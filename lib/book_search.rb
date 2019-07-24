@@ -1,9 +1,6 @@
 class BookSearch
-  class << self
-    Book::SEARCHABLE_ATTRS.each do |attr|
-      define_method "by_#{attr}" do |value|
-        books = GoogleBooks.search("#{attr}:#{value}", api_key: ENV["GOOGLE_KEY"])
-      end
-    end
+  def self.by_isbn(isbn)
+    isbn = isbn.gsub("-", "")
+    GoogleBooks.search("isbn:#{isbn}", api_key: ENV["GOOGLE_KEY"])
   end
 end
