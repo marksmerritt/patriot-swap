@@ -1,7 +1,7 @@
 <div class="book-container">
   <div class="book-details__img-container">
-    <%= image_tag book.image_link, class: "book-details__img" %>
-    <%= link_to "Sell this book", book_from_google_path(isbn: book.isbn), class: "book-details__sell-btn", id: "sell-book-#{book.isbn}" %>
+    <%= image_tag book.image, class: "book-details__img" if book.image.attached? %>
+    <%= link_to "Sell this book", new_book_listing_path(book), class: "book-details__sell-btn", id: "sell-book-#{book.isbn}" %>
   </div>
     
   <ul class="book-details__list">

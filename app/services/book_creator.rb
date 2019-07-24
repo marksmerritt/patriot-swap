@@ -5,33 +5,24 @@ class BookCreator < ApplicationService
     @isbn = isbn
   end
 
-  # TODO: Add errors to result
   def call
-    response = BookSearch.by_isbn(@isbn)
-
-    if response
-      response = response.first
-      @book = Book.where(isbn: response.isbn).first_or_initialize do |book|
-        set_book_attrs(book, response)
-      end
-
-      unless @book.persisted?
-        if @book.save && response.image_link
-          attach_img(@book, response.image_link)
-        end
+    @book = Book.where(isbn: @isbn).first_or_initialize do |book|
+      response = BookSearch.by_isbn(@isbn).first
+      set_book_attrs(book, response) if response
+    end
+      
+    unless @book.persisted?
+      if @book.save && @book.image_url
+        attach_img(@book, @book.image_url)
       end
     end
 
-    return OpenStruct.new(success?: true, book: @book) if @book
+    return OpenStruct.new(success?: true, book: @book) if @book.persisted?
     OpenStruct.new(success?: false, book: nil) 
   end
 
 
   private 
-
-  def book_search
-    BookSearch.by_isbn(@isbn)
-  end
 
   def set_book_attrs(book, response)
     book.title = response.title
@@ -39,10 +30,11 @@ class BookCreator < ApplicationService
     book.publisher = response.publisher
     book.authors = response.authors
     book.description = response.description
+    book.image_url = response.image_link
   end
 
-  def attach_img(book, img_link)
-    book_image = open(img_link)
+  def attach_img(book, img_url)
+    book_image = open(img_url)
     book.image.attach(io: book_image, filename: "#{book.title}", content_type: book_image.content_type)
   end
 end

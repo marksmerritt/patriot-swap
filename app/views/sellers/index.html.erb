@@ -10,7 +10,7 @@
   <% end %>
   
   <div class="sellers__search-results">
-    <%= render partial: "books/book", collection: @books if @books %>  
+    <%= render partial: "books/book", locals: { book: @book } if @book %>  
   </div>
   
 </div>

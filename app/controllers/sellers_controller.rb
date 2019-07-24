@@ -3,8 +3,11 @@ class SellersController < ApplicationController
   
   def index
     if params[:q]
-      @books = BookSearch.by_isbn(params[:q])
-      flash[:error] = "No results" unless @books
+      @book = BookCreator.call(params[:q]).book
+
+      unless @book 
+        flash[:error] = "No results...double check the ISBN or create a manual listing"
+      end
     end
   end
 end
