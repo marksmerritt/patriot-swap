@@ -1,37 +1,61 @@
-<%= form_with model: [@book, @listing] do |f| %>
+<div class="new-listing">
+  <%= form_with model: [@book, @listing], class: "new-listing__form" do |f| %>
+    <h3 class="new-listing__heading">
+      New Listing For 
+      <span class="new-listing__heading-em"><%= @book.title %></span>
+    </h3>
 
-  <div class="form-group">
-    <%= f.label :images %>
-    <%= f.file_field :images, multiple: true, id: "images-field", class: "form-control" %>
-  </div>
+    <div class="new-listing__form-group">
+      <%= f.label :images, "Add Images", class: "new-listing__label" %>
+      <%= f.file_field :images, multiple: true, id: "images-field" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, id: "title-field", class: "form-control" %>
-  </div>
+    <div class="new-listing__form-group">
+      <%= f.text_field :title, class: "new-listing__text-field new-listing__text-field--title", id: "title-field", placeholder: "Title" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :body %>
-    <%= f.rich_text_area :body, id: "body-field", class: "form-control" %>
-  </div>
+    <div class="new-listing__rich-text">
+      <%= f.rich_text_area :body, id: "body-field", placeholder: "Add a desrciption..." %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :condition %>
-    <%= f.select :condition, Listing.conditions.keys %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :price_cents %>
-    <%= f.text_field :price_cents, id: "price-cents-field", class: "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :tags, value: "Tags" %>
-    <%= f.text_field :tags_as_string, id: "tag-names-field" %>
-  </div>
-  
-  <div>
-    <%= f.submit "Post", id: "listing-submit-btn" %>
-  </div>
+    <div class="new-listing__form-group">
+      <%= f.label :condition, class: "new-listing__label" %>
+      <%= f.select :condition, Listing.conditions.keys %>
+    </div>
+    
+    <div class="new-listing__form-group">
+      <span class="new-listing__dollar-sign">$</span>
+      <%= f.text_field :price_cents, class: "new-listing__text-field new-listing__text-field--price", id: "price-cents-field", placeholder: "Price", value: "" %>
+    </div>
+    
+    <div class="new-listing__form-group">
+      <%= f.label :tags, value: "Tags", class: "new-listing__label" %>
+      <%= f.text_field :tags_as_string, class: "new-listing__tag-field", id: "tag-names-field" %>
+    </div>
+    
+    <div>
+      <%= f.submit "Post", id: "listing-submit-btn", class: "new-listing__submit-btn" %>
+    </div>
 
-<% end %>
+  <% end %> 
+
+  <div class="new-listing__rules-container">
+    <div class="rules">
+      <h4 class="rules__heading">Details</h4>
+
+      <ul class="rules__list">
+        <li class="rules__list-item">
+          Your listing will be live a few minutes after creating it. 
+        </li>
+
+        <li class="rules__list-item">
+          Your listing will expire in 30 days. You can prevent it from
+          expiring by editing it.
+        </li>
+        <li class="rules__list-item">
+          Please remove your listing once it is sold. 
+        </li>
+      </ul>
+    </div>
+  </div> 
+</div>
