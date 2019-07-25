@@ -7,7 +7,7 @@
 
     <div class="new-listing__form-group">
       <%= f.label :images, "Add Images", class: "new-listing__label" %>
-      <%= f.file_field :images, multiple: true, id: "images-field" %>
+      <%= f.file_field :images, multiple: true, direct_upload: true %>
     </div>
 
     <div class="new-listing__form-group">
@@ -41,7 +41,7 @@
 
   <div class="new-listing__rules-container">
     <div class="rules">
-      <h4 class="rules__heading">Details</h4>
+      <h4 class="rules__heading">Info</h4>
 
       <ul class="rules__list">
         <li class="rules__list-item">
@@ -59,3 +59,5 @@
     </div>
   </div> 
 </div>
+
+
