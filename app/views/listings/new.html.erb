@@ -21,7 +21,7 @@
     </div>
 
     <div class="new-listing__form-group">
-      <%= f.label :condition, class: "new-listing__label" %>
+      <%= f.label :condition, "Condition: ", class: "new-listing__label" %>
       <%= f.select :condition, Listing.conditions.keys %>
     </div>
     
@@ -31,12 +31,12 @@
     </div>
     
     <div class="new-listing__form-group">
-      <%= f.label :tags, value: "Tags", class: "new-listing__label" %>
+      <%= f.label :tags, "Tags: ", value: "Tags", class: "new-listing__label" %>
       <%= f.text_field :tags_as_string, class: "new-listing__tag-field", id: "tag-names-field" %>
     </div>
     
     <div>
-      <%= f.submit "Post", id: "listing-submit-btn", class: "new-listing__submit-btn" %>
+      <%= f.submit "Submit Listing", id: "listing-submit-btn", class: "new-listing__submit-btn" %>
     </div>
 
   <% end %> 

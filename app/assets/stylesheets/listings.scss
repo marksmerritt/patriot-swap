@@ -341,7 +341,37 @@
     margin: 2rem 0;
   }
 
+  select{
+    display: block;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 500;
+    color: $color-grey-dark-2;
+    padding: 2rem 4rem;
+    max-width: 35%;
+    border: 1px solid $color-grey-dark-3;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5rem;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  select:hover {
+    border-color: $color-primary;
+  }
+
+  select:focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222; 
+    outline: none;
+  }
+
   &__label {
+    margin-right: 1rem;
     font-size: 1.2rem;
     color: $color-grey-dark-2;
   }
@@ -383,6 +413,25 @@
 
   }
 
+  &__submit-btn {
+    margin: 4rem 0;
+    border: 1px solid $color-primary;
+    border-radius: 3px;
+    background-color: $color-primary;
+    color: #fff;
+    font-size: 2rem;
+    font-family: inherit;
+    padding: 1rem 5rem;
+    letter-spacing: .05rem;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
+
+
+  }
+
   &__rules-container {
     flex: 1;
     margin-left: 2rem;
@@ -410,6 +459,7 @@
     color: $color-primary-dark;
   }
 }
+
 
 
 
