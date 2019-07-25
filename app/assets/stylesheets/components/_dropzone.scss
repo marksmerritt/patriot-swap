@@ -1,0 +1,25 @@
+#images-dropzone {
+  display: flex;
+  border: 1.5px dashed $color-primary;
+  width: 70%;
+}
+
+.dz-image-preview {
+  max-width: 25%;
+}
+
+.dz-image {
+  max-width: 100%;
+}
+
+.dz-message {
+  color: $color-grey-light-4;
+}
+
+.dz-remove {
+  color: $color-primary;
+}
+
+#images-dropzone {
+  margin-bottom: 3rem;
+}
