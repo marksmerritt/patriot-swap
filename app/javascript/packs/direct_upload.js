@@ -1,40 +1,63 @@
 import { DirectUpload } from "@rails/activestorage"
+import Dropzone from "dropzone"
+Dropzone.autoDiscover = false;
 
 document.addEventListener("turbolinks:load", () => {
   let controller = ($("body").data("controller")) == "listings";
   let action = ($("body").data("action")) == "new";
 
   if (controller && action){
-    let input = document.querySelector('input[type=file]');
+    let input = $("input[type=file]");
+    let url = $("#images-uploader").data("directUploadUrl");
+    let dz = $("#images-dropzone");
     
-    const onDrop = (event) => {
-      event.preventDefault()
-      const files = event.dataTransfer.files;
-      Array.from(files).forEach(file => uploadFile(file))
-    }
-     
+    dz.dropzone({ 
+      url: url,
+      autoProcessQueue: false,
+      acceptedFiles: 'image/*',
+      addRemoveLinks: true,
+      clickable: false,
+      maxFiles: 4,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      init: function() {
+        this.on("addedfile", function(file) {
+          if(file['type'].split('/')[0] === 'image'){
+            setTimeout(function(){ 
+              if(file.accepted) {
+                uploadFile(file);
+                $(".dz-progress").remove();  
+                console.log(file);
+              } 
+            }, 1000);
+          }
+        })
+      }
+    })
+
     // Bind to normal file selection
-    input.addEventListener('change', (event) => {
+    input.on('change', (event) => {
       Array.from(input.files).forEach(file => uploadFile(file))
       // clear the selected files from the input
       input.value = null
     })
      
-    const uploadFile = (file) => {
+    function uploadFile(file) {
       // make sure form has file_field direct_upload: true, which
       //  provides data-direct-upload-url
-      const url = input.dataset.directUploadUrl
+      const url = input.data("directUploadUrl");
       const upload = new DirectUpload(file, url)
   
       upload.create((error, blob) => {
         if (error) {
-          conrole.log(error);
+          console.log(error);
         } else {
-          const hiddenField = document.createElement('input')
+          const hiddenField = document.createElement('input');
           hiddenField.setAttribute("type", "hidden");
           hiddenField.setAttribute("value", blob.signed_id);
-          hiddenField.name = input.name
-          document.querySelector('.new-listing__form').appendChild(hiddenField)
+          hiddenField.setAttribute("name", "listing[images][]");
+          document.querySelector('.new-listing__form').appendChild(hiddenField);
         }
       })
     }
