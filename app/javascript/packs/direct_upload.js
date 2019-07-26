@@ -28,10 +28,19 @@ document.addEventListener("turbolinks:load", () => {
               if(file.accepted) {
                 uploadFile(file);
                 $(".dz-progress").remove();  
-                console.log(file);
+                $();
               } 
             }, 1000);
           }
+        }),
+        this.on("removedfile", function(file) {
+          let id = file._removeLink.id;
+
+          $("input[type=hidden]").each(function() {
+            if ($(this).val() === id) {
+              $(this).remove();
+            };
+          });
         })
       }
     })
@@ -58,6 +67,7 @@ document.addEventListener("turbolinks:load", () => {
           hiddenField.setAttribute("value", blob.signed_id);
           hiddenField.setAttribute("name", "listing[images][]");
           document.querySelector('.new-listing__form').appendChild(hiddenField);
+          $(".dz-remove").last().attr("id", blob.signed_id);
         }
       })
     }
