@@ -22,7 +22,7 @@
 
     <div class="new-listing__form-group">
       <%= f.label :condition, "Condition: ", class: "new-listing__label" %>
-      <%= f.select :condition, Listing.conditions.keys %>
+      <%= f.select :condition, Listing.conditions.keys.map{ |cond| [cond.humanize, cond] } %>
     </div>
     
     <div class="new-listing__form-group">
