@@ -69,8 +69,8 @@
             <%= display_icon(icon: "chevron-right", style: "listing-details__chevron") %>
             <span class="listing-details__list-item-header">Tags:</span> 
             <div class="listing-details__tags">
-              <% @listing.tag_names.each do |tag| %>
-                <%= link_to tag, buyers_path(q: tag), class: "listing-details__tag" %>
+              <% @listing.tags.each do |tag| %>
+                <%= link_to tag.name, buyers_path(q: tag.name), class: "listing-details__tag" %>
               <% end %>
             </div>
           </li>

@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    3.times { @listing.tags.build }
   end
 
   def create
@@ -31,7 +32,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:title, :body, :condition, :price, :tags_as_string, images: [])
+    params.require(:listing).permit(:title, :body, :condition, :price, tags_attributes: [:name], images: [])
   end
 
   def set_book

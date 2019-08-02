@@ -4,10 +4,8 @@ class Book < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  Gutentag::ActiveRecord.call self
-  include Taggable
-
   has_many :listings
+  include Taggable
 
   has_one_attached :image
 

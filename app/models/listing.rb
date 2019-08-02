@@ -1,15 +1,13 @@
 class Listing < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
   enum condition: { brand_new: 0, good: 1, fair: 2, poor: 3 }
-
-  Gutentag::ActiveRecord.call self
-  include Taggable
     
   searchkick  
 
   has_rich_text :body
   has_many_attached :images
   has_many :conversations
+  include Taggable
 
   belongs_to :seller, class_name: "User"
   belongs_to :book

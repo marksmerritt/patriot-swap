@@ -26,14 +26,20 @@ describe "navigation" do
 
     # TODO: Form field helper
     context "with valid input" do 
-      it "can be created from a form" do 
+      before do 
         visit new_book_listing_path(@book)
         fill_in "title-field", with: "Some Great Title"
         find('#listing_condition').find(:xpath, 'option[2]').select_option
         fill_in "price-cents-field", with: "100.00"
-        fill_in "tag-names-field", with: "IT400"
+        fill_in "listing[tags_attributes][0][name]", with: "IT100"
+      end
 
+      it "can be created from a form" do 
         expect{ click_button "listing-submit-btn" }.to change{ Listing.count }.by(1)
+      end
+
+      it "creates associated tags" do 
+        expect{ click_button "listing-submit-btn" }.to change{ Tag.count }.by(1)
       end
     end
 

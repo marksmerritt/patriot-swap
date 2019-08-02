@@ -1,11 +1,9 @@
 module Taggable
-  include ActiveSupport::Concern
+  extend ActiveSupport::Concern
 
-  def tags_as_string
-    tag_names.join(", ")
-  end
-
-  def tags_as_string=(string)
-    self.tag_names = string.split(/,\s*/)
+  included do 
+    has_many :taggings, as: :taggable
+    has_many :tags, through: :taggings
+    accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes['name'].blank? }
   end
 end

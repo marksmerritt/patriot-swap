@@ -5,8 +5,8 @@
     <p><%= listing.book.title %></p>
   </div>
   <div class="listing__tags">
-    <% listing.tag_names.each do |tag| %>
-      <%= link_to tag, buyers_path(q: tag), class: "listing__tag" %>
+    <% listing.tags.each do |tag| %>
+      <%= link_to tag.name, buyers_path(q: tag.name), class: "listing__tag" %>
     <% end %>
   </div>
   <%= link_to "View Listing", listing_path(listing), class: "btn listing__btn", id: "listing-#{listing.id}-show" %>

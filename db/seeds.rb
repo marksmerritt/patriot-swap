@@ -106,12 +106,6 @@ end
 puts "#{Book.count} books created"
 
 
-# ------------- Tags for listings -------------
-
-TAGS = ["IT100", "IT200", "IT300", "IT400"].freeze
-
-
-
 # ------------- Create Listings -------------
 
 puts "Creating active listings with images..."
@@ -125,10 +119,7 @@ puts "Creating active listings with images..."
     book: @books.sample, 
     condition: Faker::Number.between(0, 3)
   )
-  rand(1..3).times do
-    listing.tag_names << TAGS.sample
-  end
-
+  
   listing.save! 
 
   rand(1..3).times do |i|  

@@ -31,8 +31,10 @@
     </div>
     
     <div class="new-listing__form-group">
-      <%= f.label :tags, "Tags: ", value: "Tags", class: "new-listing__label" %>
-      <%= f.text_field :tags_as_string, class: "new-listing__tag-field", id: "tag-names-field" %>
+      <%= f.fields_for :tags do |tag| %>
+        <%= tag.label :name, "Name: ", class: "new-listing__label" %>
+        <%= tag.text_field :name, class: "new-listing__tag-field", id: "tag-names-field" %>
+      <% end %>
     </div>
     
     <div>
