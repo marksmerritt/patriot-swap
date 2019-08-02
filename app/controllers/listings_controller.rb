@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    3.times { @listing.tags.build }
+    @listing.tags.new
   end
 
   def create

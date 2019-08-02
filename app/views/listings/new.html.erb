@@ -30,11 +30,13 @@
       <%= f.text_field :price, class: "new-listing__text-field new-listing__text-field--price", id: "price-cents-field", placeholder: "Price", value: "" %>
     </div>
     
-    <div class="new-listing__form-group">
+    <div class="new-listing__form-group" id="tags">
       <%= f.fields_for :tags do |tag| %>
-        <%= tag.label :name, "Name: ", class: "new-listing__label" %>
-        <%= tag.text_field :name, class: "new-listing__tag-field", id: "tag-names-field" %>
+        <%= render "tag_fields", f: tag %>
       <% end %>
+      <div id="add-tag">
+        <%= link_to_add_association "add tag", f, :tags %>  
+      </div>
     </div>
     
     <div>

@@ -21,8 +21,10 @@ import "controllers"
 
 require("trix")
 require("@rails/actiontext")
+require("cocoon-js")
 require("packs/flash_messages")
 require("packs/typed")
 require("packs/chat")
 require("packs/modal")
 require("packs/direct_upload")
+require("packs/tags")

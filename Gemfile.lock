@@ -98,6 +98,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    cocoon (1.2.14)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crack (0.4.3)
@@ -381,6 +382,7 @@ DEPENDENCIES
   bullet (~> 6.0)
   byebug
   capybara (~> 3.20)
+  cocoon
   database_cleaner (~> 1.7)
   devise (~> 4.6, >= 4.6.2)
   factory_bot_rails (~> 5.0, >= 5.0.2)
