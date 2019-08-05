@@ -21,7 +21,7 @@ document.addEventListener("turbolinks:load", () => {
           $(".convo-show-link").removeClass("convo-show-link__active");
           $(`#convo-link-btw-${seller_id}-${buyer_id}`).addClass("convo-show-link__active");
 
-          let conversation = $(`#conversation-btw-${seller_id}-${buyer_id}`);
+          let conversation = $("`#conversation-btw-${seller_id}-${buyer_id}`");
           conversation.animate({
             scrollTop: conversation.get(0).scrollHeight
           }, 1000);

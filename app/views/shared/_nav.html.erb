@@ -17,9 +17,13 @@
     </div>
     
     <% if current_user %>
-      <div class="user-nav__icon-box">
+      <div class="user-nav__icon-box" data-behavior="notifications-link">
         <%= display_icon(icon: "bell", style: "user-nav__icon") %>
-        <span class="user-nav__notification">7</span>
+        <span class="user-nav__notification" data-behavior="unread-count"></span>
+        <div class="notifications" data-behavior="notifications">
+          <ul data-behavior="notification-items" class="notification-items">
+          </ul>
+        </div>
       </div>
     <% else %>
       <%= link_to user_facebook_omniauth_authorize_path do %>
@@ -62,3 +66,11 @@
     </ul>
   </div>
 </nav>
+
+
+
+
+
+
+
+
