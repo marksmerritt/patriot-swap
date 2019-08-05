@@ -36,6 +36,15 @@ describe "navigation" do
         fill_in "new-message-body-#{buyer.id}", with: "Hello world"
         expect{ click_button "send-message-btn" }.to change{ seller.notifications.count }.by(1)
       end
+
+      it "does not send multiple notifications for the same action" do 
+        fill_in "new-message-body-#{buyer.id}", with: "Something"
+        click_button "send-message-btn"
+        
+        visit listing_path(convo.listing)
+        fill_in "new-message-body-#{buyer.id}", with: "Something Else"
+        expect{ click_button "send-message-btn" }.to change{ seller.notifications.count }.by(0)
+      end
     end
   end
 end

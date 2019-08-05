@@ -13,8 +13,17 @@ class MessagesController < ApplicationController
                                                            current_user_id: current_user.id
 
       # Send notifications
+      # TODO: this does not belong here...
       recipient = (current_user == @conversation.buyer ? @conversation.seller : @conversation.buyer)
-      Notification.create(recipient: recipient, actor: current_user, action: "message", notifiable: @conversation.listing)
+      @notification = Notification.where(recipient: recipient, 
+                                        actor: current_user, 
+                                        action: "message", 
+                                        notifiable: @conversation.listing, 
+                                        read_at: nil).first_or_initialize 
+      
+      unless @notification.persisted?
+        @notification.save
+      end
     end
   end
 
