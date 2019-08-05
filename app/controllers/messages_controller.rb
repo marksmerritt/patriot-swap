@@ -21,9 +21,8 @@ class MessagesController < ApplicationController
                                         notifiable: @conversation.listing, 
                                         read_at: nil).first_or_initialize 
       
-      unless @notification.persisted?
-        @notification.save
-      end
+      
+      @notification.save unless @notification.persisted?
     end
   end
 
