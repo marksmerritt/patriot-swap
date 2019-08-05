@@ -19,6 +19,11 @@ Rails.application.routes.draw do
 
   resources :sellers, only: [:index]
   resources :buyers, only: [:index]
+  resources :notifications do 
+    collection do 
+      post :mark_as_read
+    end
+  end
   
   get "book_callbacks/:isbn", to: "book_callbacks#from_google", as: "book_from_google"
 end

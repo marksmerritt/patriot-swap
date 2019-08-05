@@ -1,5 +1,7 @@
 class Conversation < ApplicationRecord
   belongs_to :listing
+  belongs_to :seller, class_name: "User"
+  belongs_to :buyer, class_name: "User"
 
   has_many :messages
 
@@ -11,9 +13,5 @@ class Conversation < ApplicationRecord
 
   def self.between(seller_id, buyer_id) 
     where(seller_id: seller_id, buyer_id: buyer_id)
-  end
-
-  def buyer
-    User.find(buyer_id)
   end
 end

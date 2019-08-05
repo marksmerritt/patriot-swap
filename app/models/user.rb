@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :connected_accounts, dependent: :destroy
   has_many :listings, foreign_key: "seller_id", dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id
 
   belongs_to :location, optional: true
 

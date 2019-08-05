@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :conversation do
-    seller_id { 1 }
-    buyer_id { 2 }
+    association :seller, factory: :user
+    association :buyer, factory: :second_user
     association :listing
   end
 end

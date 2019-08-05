@@ -31,6 +31,11 @@ describe "navigation" do
         fill_in "new-message-body-#{buyer.id}", with: "Hello world"
         expect{ click_button "send-message-btn" }.to change{ Message.count }.by(1)
       end
+
+      it "sends the recipient a notification" do 
+        fill_in "new-message-body-#{buyer.id}", with: "Hello world"
+        expect{ click_button "send-message-btn" }.to change{ seller.notifications.count }.by(1)
+      end
     end
   end
 end

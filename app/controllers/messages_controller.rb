@@ -12,7 +12,9 @@ class MessagesController < ApplicationController
                                                            buyer_id: @conversation.buyer_id,
                                                            current_user_id: current_user.id
 
-                                                           
+      # Send notifications
+      recipient = (current_user == @conversation.buyer ? @conversation.seller : @conversation.buyer)
+      Notification.create(recipient: recipient, actor: current_user, action: "message", notifiable: @conversation.listing)
     end
   end
 
