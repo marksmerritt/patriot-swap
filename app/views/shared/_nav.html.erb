@@ -5,10 +5,9 @@
   
   <%= form_with url: buyers_path, method: :get, local: true, class: "search" do |f| %>
     <%= f.text_field :q, placeholder: "Search books by class, isbn, or title...", class: "search__input", id: "listing-search-field" %>
-    <% link_to buyers_path do %>
-      <%= display_icon(icon: "magnifying-glass", style: "search__icon", id: "listing-search-submit") %>
+    <%= button_tag class: "search__btn", id: "listing-search-submit" do %>
+      <%= display_icon(icon: "magnifying-glass", style: "search__icon") %>
     <% end %>
-    <%= f.submit "Submit", id: "listing-search-submit" %>
   <% end %>
 
   <div class="user-nav">

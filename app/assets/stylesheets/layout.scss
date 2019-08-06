@@ -80,14 +80,23 @@
 
   &__btn {
     border: none;
-    background-color: $color-grey-light-2;
+    background-color: transparent;
 
     &:focus {
       outline: none;
     }
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &:active {
       transform: translateY(2px);
+    }
+
+    @media only screen and (max-width: 900px) {
+      position: absolute;
+      right: 12%;
     }
   }
 
@@ -95,11 +104,12 @@
     height: 2rem;
     width: 2rem;
     fill: $color-grey-light-4;
-  }
-}
 
-#listing-search-submit {
-  display: none;
+    &:hover,
+    &:active {
+      fill: $color-primary;
+    }
+  }
 }
 
 .user-nav {
