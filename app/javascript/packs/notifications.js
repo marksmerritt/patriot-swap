@@ -51,7 +51,7 @@ $(document).on("turbolinks:load", () => {
         });
       } else {
         notificationAlert.css("display", "none");
-        notifications.append("Nothing to see here");
+        notifications.append("Nothing to see here...");
       }  
     }
   }

@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="user-nav">
-    <div class="user-nav__icon-box">
-      <%= link_to "Sell", sellers_path, class: "user-nav__sell-btn", id: "nav-sell-btn" %>
-    </div>
-    
     <% if current_user %>
       <div class="user-nav__icon-box" data-behavior="notifications-link">
         <%= display_icon(icon: "bell", style: "user-nav__icon") %>
@@ -32,19 +28,32 @@
     <% end %>
 
     <div class="user-nav__icon-box">
-      <% if current_user %>
-        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, id: "logout-link" %>
-      <% else %>
+      <%= link_to "Sell Your Book", sellers_path, class: "user-nav__sell-btn", id: "nav-sell-btn" %>
+    </div>
+
+    <% unless current_user %>
+      <div class="user-nav__icon-box">
         <%= link_to "Sign In", new_user_session_path, id: "signin-link" %> /
         <%= link_to "Sign Up", new_user_registration_path, id: "signup-link" %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
     
     <% if current_user %>
       <div class="user-nav__user">
-        <%= link_to edit_user_registration_path do %>
+        <div id="avatar-dropdown-btn">
           <%= display_avatar(user: current_user, style: "user-nav__avatar") %>
-        <% end %>
+        </div>
+        <ul class="user-nav__dropdown" id="avatar-dropdown">
+          <li class="user-nav__dropdown-item">
+            <%= link_to "My Listings", "#", id: "edit-profile-link" %>
+          </li>
+          <li class="user-nav__dropdown-item">
+            <%= link_to "Edit Account", edit_user_registration_path, id: "edit-profile-link" %>
+          </li>
+          <li class="user-nav__dropdown-item">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, id: "logout-link" %>
+          </li>
+        </ul>
       </div>
     <% end %>
   </div>
