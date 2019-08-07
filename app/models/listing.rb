@@ -6,7 +6,7 @@ class Listing < ApplicationRecord
 
   has_rich_text :body
   has_many_attached :images
-  has_many :conversations
+  has_many :conversations, dependent: :destroy
   include Taggable
 
   belongs_to :seller, class_name: "User"
