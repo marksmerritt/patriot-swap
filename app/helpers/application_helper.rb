@@ -36,10 +36,10 @@ module ApplicationHelper
   end
 
   def thumbnail_img(img)
-    img.variant(resize: "200x150!").processed
+    img.variant(combine_options: {thumbnail: '200x150^', gravity: 'center'}).processed
   end
 
   def full_img(img)
-    img.variant(resize: "600x450!").processed
+    img.variant(combine_options: {thumbnail: '600x450^', gravity: 'center'}).processed
   end
 end

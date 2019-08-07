@@ -181,6 +181,7 @@
   &__images {
     list-style: none;
     display: flex;
+    align-items: center;
 
     li:not(:last-child) {
       margin-right: 1rem;
@@ -197,6 +198,7 @@
   }
 
   &__img {
+    max-height: 15rem;
     display: block;
     width: 100%;
     border: 2px solid transparent;
