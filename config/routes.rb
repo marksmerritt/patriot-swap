@@ -26,4 +26,11 @@ Rails.application.routes.draw do
   end
   
   get "book_callbacks/:isbn", to: "book_callbacks#from_google", as: "book_from_google"
+
+  scope controller: :help do 
+    get :conditions
+    get :privacy 
+    get :faq 
+    get :contact
+  end
 end
