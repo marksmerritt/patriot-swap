@@ -3,7 +3,7 @@ class Conversation < ApplicationRecord
   belongs_to :seller, class_name: "User"
   belongs_to :buyer, class_name: "User"
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   validates_presence_of :seller_id, :buyer_id
 
