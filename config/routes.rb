@@ -33,4 +33,8 @@ Rails.application.routes.draw do
     get :faq 
     get :contact
   end
+
+  scope controller: :user_settings do 
+    patch :toggle_email_subscription
+  end
 end

@@ -2,6 +2,19 @@
   <div class="devise-form__form-container">
     <div class="devise-form__form">
 
+      <!----------------- User Settings ----------------->
+
+      <h3 class="form__heading">Your settings</h3>
+      
+      <div class="form__group">
+        <% if current_user.subscribed_to_emails? %>
+          <%= link_to "Unsubscribe from emails", toggle_email_subscription_path(subscribed_to_emails: false), method: :patch, local: true, class: "form-settings__unsubscribe-btn", id: "toggle-email-subscription-link" %>
+        <% else %>
+          <%= link_to "Subscribe to emails", toggle_email_subscription_path(subscribed_to_emails: true), method: :patch, local: true, class: "form-settings__resubscribe-btn", id: "toggle-email-subscription-link" %>
+        <% end %>
+      </div>
+      
+        
       <!----------------- Information Update ----------------->
 
       <h3 class="form__heading">Edit Your Information</h3>

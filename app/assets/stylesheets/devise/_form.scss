@@ -157,3 +157,36 @@
     }
   }
 }
+
+
+.form-settings {
+  
+  &__unsubscribe-btn,
+  &__resubscribe-btn {
+    display: inline-block;
+    border-radius: 3px;
+    padding: .3rem 1rem;
+  }
+
+  &__unsubscribe-btn {
+    color: #eb4034;
+    border: 1px solid currentColor;
+
+    &:hover,
+    &:active {
+      color: #fff;
+      background-color: #eb4034;
+    }
+  }
+
+  &__resubscribe-btn {
+    color: $color-primary;
+    border: 1px solid currentColor;
+
+    &:hover,
+    &:active {
+      color: #fff;
+      background-color: $color-primary;
+    }
+  }
+}

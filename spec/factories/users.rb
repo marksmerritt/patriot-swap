@@ -28,4 +28,15 @@ FactoryBot.define do
     confirmed_at { Date.yesterday }
     association :location
   end
+
+  factory :subscribed_user, class: User do
+    email { generate :email }
+    password { "helloworld" }
+    password_confirmation { "helloworld" }
+    first_name { "User" }
+    last_name { "Doe" }
+    phone { ENV["MY_PHONE_NUMBER"] }
+    confirmed_at { Date.yesterday }
+    association :location
+  end
 end
