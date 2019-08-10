@@ -20,5 +20,15 @@ describe "listing history" do
     it "displays all of the current user's listings" do 
       expect(page).to have_content(/#{@active_listing.title}|#{@inactive_listing.title}/)
     end
+
+    it "allows a user to inactivate a listing" do 
+      click_link "inactivate-listing-#{@active_listing.id}"
+      expect(@active_listing.reload.status).to eq("inactive")
+    end
+
+    it "allows a user to activate a listing" do 
+      click_link "activate-listing-#{@inactive_listing.id}"
+      expect(@inactive_listing.reload.status).to eq("active")
+    end
   end
 end

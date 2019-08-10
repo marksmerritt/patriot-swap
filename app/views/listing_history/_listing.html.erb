@@ -1,5 +1,11 @@
 <div>
   <%= link_to listing.title, listing_path(listing) %> <br />
   Book: <%= listing.book.title %> <br />
-  Expiration Date: <%= ymd_format(listing.expiration_date) %>
+  Expiration Date: <%= ymd_format(listing.expiration_date) %> <br />
+
+  <% if listing.active? %>
+    <%= link_to "Inactivate listing", listing_status_path(listing), method: :patch, id: "inactivate-listing-#{listing.id}" %>
+  <% else %>
+    <%= link_to "Activate listing", listing_status_path(listing), method: :patch, id: "activate-listing-#{listing.id}" %>
+  <% end %>
 </div>

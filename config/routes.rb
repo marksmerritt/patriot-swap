@@ -8,17 +8,19 @@ Rails.application.routes.draw do
   resources :courses
   
   resources :books do 
-    resources :listings, shallow: true do 
+    resources :listings, shallow: true do
       resources :conversations, only: :create
     end
   end
+
+  resources :listing_status, only: [:update]
 
   resources :conversations do 
     resources :messages, only: :create
   end
 
   resources :sellers, only: [:index]
-  resources :listing_history, only: [:index]
+  resources :listing_history, only: [:index] 
   resources :buyers, only: [:index]
   resources :notifications do 
     collection do 
