@@ -1,15 +1,15 @@
 class TwilioClient
-  attr_reader :client
-
-  def initialize
+  def initialize(user, message)
     @client = Twilio::REST::Client.new(account_sid, auth_token)
+    @user = user
+    @message = message
   end
 
-  def send_text(user, message)
+  def send_text
     @client.api.account.messages.create(
-      to: user.phone,
+      to: @user.phone,
       from: phone_number,
-      body: message
+      body: @message
     )
   end
 
