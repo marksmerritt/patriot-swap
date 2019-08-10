@@ -2,7 +2,17 @@ class Listing < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
   enum condition: { brand_new: 0, good: 1, fair: 2, poor: 3 }
     
-  searchkick  
+  searchkick
+  scope :search_import, -> { includes(:tags, :book, images_attachments: [:blob]) }
+
+  def search_data
+    {
+      title: title,
+      tags: tags.map(&:name).join(" "),
+      book_title: book.title,
+      status: status
+    }
+  end  
 
   has_rich_text :body
   has_many_attached :images
