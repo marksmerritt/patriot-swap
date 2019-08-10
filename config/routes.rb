@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :sellers, only: [:index]
+  resources :listing_history, only: [:index]
   resources :buyers, only: [:index]
   resources :notifications do 
     collection do 

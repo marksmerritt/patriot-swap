@@ -420,30 +420,25 @@
   }
 
   &__dropdown-item {    
-    border-radius: 3px;
-    
     &:not(:last-child){
       margin-bottom: .7rem;
     }
+  }
+
+  &__dropdown-link {
+    display: block;    
+    width: 100%;
+    color: $color-primary-dark;  
+    padding: .5rem 1rem;
+    border-radius: 3px;
 
     &:hover,
     &:active {
       background-color: $color-primary;
+      color: #fff;
     }
-    
-    a {
-      color: $color-primary-dark;  
-      padding: 1rem;
-
-      &:hover,
-      &:active {
-        color: #fff;
-      }
-    }
-    
   }
 }
-
 
 
 

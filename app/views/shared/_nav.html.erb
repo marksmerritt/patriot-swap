@@ -44,13 +44,13 @@
         </div>
         <ul class="user-nav__dropdown" id="avatar-dropdown">
           <li class="user-nav__dropdown-item">
-            <%= link_to "My Listings", "#", id: "edit-profile-link" %>
+            <%= link_to "My Listings", listing_history_index_path, class: "user-nav__dropdown-link", id: "listing-history-link" %>
           </li>
           <li class="user-nav__dropdown-item">
-            <%= link_to "Edit Account", edit_user_registration_path, id: "edit-profile-link" %>
+            <%= link_to "Edit Account", edit_user_registration_path, class: "user-nav__dropdown-link", id: "edit-profile-link" %>
           </li>
           <li class="user-nav__dropdown-item">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, id: "logout-link" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "user-nav__dropdown-link", id: "logout-link" %>
           </li>
         </ul>
       </div>
