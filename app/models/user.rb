@@ -9,6 +9,12 @@ class User < ApplicationRecord
 
   delegate :longitude, :latitude, to: :location
 
+  include Storext.model 
+  store_attributes :settings do 
+    subscribed_to_emails Boolean, default: true
+  end
+
+
   has_one_attached :avatar
   has_many :connected_accounts, dependent: :destroy
   has_many :listings, foreign_key: "seller_id", dependent: :destroy
@@ -20,7 +26,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :location
 
   validates_presence_of :first_name, :last_name
-  validates :phone, phone: true
+  validates :phone, phone: { allow_blank: true }
 
   def display_name
     "#{self.first_name} #{self.last_name[0]}."
