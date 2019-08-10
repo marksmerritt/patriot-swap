@@ -87,7 +87,8 @@
 
   <div class="conversation-container">
     <% if (current_user == @listing.seller) && (!@listing.has_messages?) %>
-      No Messages Yet
+      <%= display_icon(icon: "chat", style: "chatlogs__no-msgs-icon") %>
+      <span class="chatlogs__no-msgs-text">No Messages yet</span>
     <% elsif current_user && current_user == @listing.seller %> 
       <div class="conversation__avatars">
         <% @conversations.each do |conversation| %>
