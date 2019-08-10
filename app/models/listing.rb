@@ -41,4 +41,12 @@ class Listing < ApplicationRecord
     end
     false
   end
+
+  def expiration_date
+    updated_at + 30.days
+  end
+
+  def expired?
+    expiration_date >= Date.today
+  end
 end

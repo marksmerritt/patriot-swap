@@ -1,0 +1,5 @@
+<div>
+  <%= link_to listing.title, listing_path(listing) %> <br />
+  Book: <%= listing.book.title %> <br />
+  Expiration Date: <%= ymd_format(listing.expiration_date) %>
+</div>

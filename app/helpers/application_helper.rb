@@ -42,4 +42,8 @@ module ApplicationHelper
   def full_img(img)
     img.variant(combine_options: {thumbnail: '600x450^', gravity: 'center'}).processed
   end
+
+  def ymd_format(dt)
+    dt.strftime("%m-%d-%y")
+  end
 end
