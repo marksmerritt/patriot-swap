@@ -5,6 +5,7 @@ class ListingStatusController < ApplicationController
     if @listing.active? && @listing.inactive!
       flash[:success] = "Your listing has been inactivated."
     elsif @listing.inactive? && @listing.active!
+      @listing.touch
       flash[:success] = "Your listing has been activated."
     else
       flash[:error] = "An error occured while changing the status of your listing. Please try again."

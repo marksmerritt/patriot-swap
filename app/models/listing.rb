@@ -31,7 +31,7 @@ class Listing < ApplicationRecord
   end
 
   def self.expired
-    where("updated_at <= ?", 30.days.ago)
+    where("updated_at <= ? AND status = ?", 30.days.ago, 0)
   end
 
   # TODO: Refactor
