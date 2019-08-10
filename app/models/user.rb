@@ -20,6 +20,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :location
 
   validates_presence_of :first_name, :last_name
+  validates :phone, phone: true
 
   def display_name
     "#{self.first_name} #{self.last_name[0]}."

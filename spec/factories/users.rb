@@ -2,6 +2,10 @@ FactoryBot.define do
   sequence :email do |n|
     "user#{n}@example.com"
   end
+
+  # sequence :phone do |n|
+  #   "1804555#{4.times.map { rand(0..10) }.join}"
+  # end
   
   factory :user do
     email { generate :email }
@@ -9,6 +13,7 @@ FactoryBot.define do
     password_confirmation { "helloworld" }
     first_name { "User" }
     last_name { "Doe" }
+    phone { ENV["MY_PHONE_NUMBER"] }
     confirmed_at { Date.yesterday }
     association :location
   end
@@ -19,6 +24,7 @@ FactoryBot.define do
     password_confirmation { "helloworld" }
     first_name { "User" }
     last_name { "Smith" }
+    phone { ENV["MY_PHONE_NUMBER"] }
     confirmed_at { Date.yesterday }
     association :location
   end

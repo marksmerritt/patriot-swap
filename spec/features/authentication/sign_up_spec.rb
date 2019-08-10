@@ -13,6 +13,7 @@ describe "naviation" do
       fill_in "first-name-field", with: "John"
       fill_in "last-name-field", with: "Doe"
       fill_in "email-field", with: "john@example.com"
+      fill_in "phone-field", with: ENV["MY_PHONE_NUMBER"]
       fill_in "password-field", with: "helloworld"
       fill_in "password-confirmation-field", with: "helloworld"
 

@@ -35,6 +35,11 @@
           <%= f.label :email, class: "form__label" %>
         </div>
 
+        <div class="form__group">
+          <%= f.phone_field :phone, autocomplete: "phone", class: "form__input", id: "phone-field", placeholder: "Phone number" %>
+          <%= f.label :phone, "Phone number", class: "form__label" %>
+        </div>
+
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
