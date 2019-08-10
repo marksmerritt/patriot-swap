@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
 
+  include Pundit
+  protect_from_forgery
+
   add_flash_types :success, :error
 
   def after_sign_in_path_for(resource_or_scope)
