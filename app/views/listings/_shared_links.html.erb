@@ -1,7 +1,13 @@
-<%= link_to "Edit", edit_listing_path(listing), id: "edit-listing-#{listing.id}" %>
-
-<% if listing.active? %>
-  <%= link_to "Inactivate listing", listing_status_path(listing), method: :patch, id: "inactivate-listing-#{listing.id}" %>
-<% else %>
-  <%= link_to "Activate listing", listing_status_path(listing), method: :patch, id: "activate-listing-#{listing.id}" %>
-<% end %>
+<ul class="listing-shared-links"> 
+  <li class="listing-shared-links__item">
+    <%= link_to "Edit", edit_listing_path(listing), class: "listing-shared-links__btn listing-shared-links__btn--edit", id: "edit-listing-#{listing.id}" %>  
+  </li>
+  
+  <li class="listing-shared-links__item">
+    <% if listing.active? %>
+      <%= link_to "Inactivate", listing_status_path(listing), method: :patch, class: "listing-shared-links__btn listing-shared-links__btn--inactivate", id: "inactivate-listing-#{listing.id}" %>
+    <% else %>
+      <%= link_to "Activate", listing_status_path(listing), method: :patch, class: "listing-shared-links__btn listing-shared-links__btn--activate", id: "activate-listing-#{listing.id}" %>
+    <% end %>
+  </li>
+</ul>
