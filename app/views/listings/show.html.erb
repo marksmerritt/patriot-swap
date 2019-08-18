@@ -1,7 +1,10 @@
 <div class="listing-show-container">
   <div class="listing-details__container">
-
-
+    <!---------------------- Modify Listing ---------------------->
+    <div class="listing-details__modify-buttons">
+      <%= link_to "Edit", edit_listing_path(@listing), id: "edit-listing-#{@listing.id}" %>
+    </div>
+    
     <!---------------------- Listing Images ---------------------->
 
     <div class="listing-details__images">

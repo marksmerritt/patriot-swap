@@ -1,0 +1,77 @@
+<div class="new-listing">
+  <%= form_with model: [@listing], class: "new-listing__form" do |f| %>
+    <h3 class="new-listing__heading">
+      Edit Your Listing For 
+      <span class="new-listing__heading-em"><%= @book.title %></span>
+    </h3>
+
+    <div class="new-listing__form-group dropzone" id="images-dropzone">
+      <div class="fallback">
+        <% @listing.images.each do |img| %>
+          <%= image_tag(thumbnail_img(img)) %>
+        <% end %>
+        
+        <div>
+          <%= f.label :images, "Add More Images", class: "new-listing__label" %>
+          <%= f.file_field :images, multiple: true, direct_upload: true, id: "images-uploader" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="new-listing__form-group">
+      <%= f.text_field :title, class: "new-listing__text-field new-listing__text-field--title", id: "title-field", placeholder: "Add a title..." %>
+    </div>
+
+    <div class="new-listing__rich-text">
+      <%= f.rich_text_area :body, id: "body-field", placeholder: "Add a desrciption..." %>
+    </div>
+
+    <div class="new-listing__form-group">
+      <%= f.label :condition, "Condition: ", class: "new-listing__label" %>
+      <%= f.select :condition, Listing.conditions.keys.map{ |cond| [cond.humanize, cond] } %>
+    </div>
+    
+    <div class="new-listing__form-group">
+      <span class="new-listing__dollar-sign">$</span>
+      <%= f.text_field :price, class: "new-listing__text-field new-listing__text-field--price", id: "price-cents-field", placeholder: "Price" %>
+    </div>
+    
+    <h4 class="new-listing__tags-label">
+      What class is this book for?
+    </h4>
+
+    <div class="new-listing__form-group" id="tags">
+      <%= f.fields_for :tags do |tag| %>
+        <%= render "tag_fields", f: tag %>
+      <% end %>
+      <div id="add-tag">
+        <%= link_to_add_association "Add", f, :tags, class: "new-listing__add-tag" %>  
+      </div>
+    </div>
+    
+    <div>
+      <%= f.submit "Save Changes", id: "listing-submit-btn", class: "new-listing__submit-btn" %>
+    </div>
+
+  <% end %> 
+
+  <div class="new-listing__rules-container">
+    <div class="rules">
+      <h4 class="rules__heading">Info</h4>
+
+      <ul class="rules__list">
+        <li class="rules__list-item">
+          Your listing will be live a few minutes after creating it. 
+        </li>
+
+        <li class="rules__list-item">
+          Your listing will expire in 30 days. You can prevent it from
+          expiring by editing it.
+        </li>
+        <li class="rules__list-item">
+          Please remove your listing once it is sold. 
+        </li>
+      </ul>
+    </div>
+  </div> 
+</div>

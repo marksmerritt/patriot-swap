@@ -8,4 +8,6 @@
   <% else %>
     <%= link_to "Activate listing", listing_status_path(listing), method: :patch, id: "activate-listing-#{listing.id}" %>
   <% end %>
+
+  <%= link_to "Edit", edit_listing_path(listing), id: "edit-listing-#{listing.id}" %>
 </div>

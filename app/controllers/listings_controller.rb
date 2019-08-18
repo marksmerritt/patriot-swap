@@ -1,9 +1,14 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_book, except: [:show]
+  before_action :set_book, except: [:show, :edit, :update]
 
   def index 
     @listings = Listing.for_book(@book)
+  end
+
+  def show
+    @listing = Listing.with_attached_images.find(params[:id])
+    set_conversations if current_user
   end
 
   def new
@@ -23,16 +28,28 @@ class ListingsController < ApplicationController
     end
   end
 
-  def show
-    @listing = Listing.with_attached_images.find(params[:id])
-    set_conversations if current_user
+  def edit
+    @listing = Listing.find(params[:id])
+    @book = @listing.book
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+
+    if @listing.update(listing_params)
+      flash[:success] = "Your listing has been updated successfully."
+      redirect_to @listing
+    else
+      flash[:error] = "There was an error updating your listing. Please try again."
+      render :edit
+    end
   end
 
 
   private
 
   def listing_params
-    params.require(:listing).permit(:title, :body, :condition, :price, tags_attributes: [:name], images: [])
+    params.require(:listing).permit(:title, :body, :condition, :price, tags_attributes: [:id, :name, :_destroy], images: [])
   end
 
   def set_book
