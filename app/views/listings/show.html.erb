@@ -3,9 +3,7 @@
 
     <!---------------------- Modify Listing ---------------------->
     <% if policy(@listing).update? %>
-      <div class="listing-details__modify-buttons">
-        <%= link_to "Edit", edit_listing_path(@listing), id: "edit-listing-#{@listing.id}" %>
-      </div>
+      <%= render partial: "listings/shared_links", locals: { listing: @listing } %>
     <% end %>
     
     <!---------------------- Listing Images ---------------------->
