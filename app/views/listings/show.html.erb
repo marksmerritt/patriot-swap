@@ -1,9 +1,12 @@
 <div class="listing-show-container">
   <div class="listing-details__container">
+
     <!---------------------- Modify Listing ---------------------->
-    <div class="listing-details__modify-buttons">
-      <%= link_to "Edit", edit_listing_path(@listing), id: "edit-listing-#{@listing.id}" %>
-    </div>
+    <% if policy(@listing).update? %>
+      <div class="listing-details__modify-buttons">
+        <%= link_to "Edit", edit_listing_path(@listing), id: "edit-listing-#{@listing.id}" %>
+      </div>
+    <% end %>
     
     <!---------------------- Listing Images ---------------------->
 
@@ -22,7 +25,6 @@
       <% end %>
     </div>
     
-
     <!---------------------- Listing Overview ---------------------->
 
     <div class="listing-details__overview">
@@ -41,7 +43,6 @@
       </div>
     </div>
     
-
     <!---------------------- Listing Details ---------------------->
 
     <div class="listing-details">
@@ -84,7 +85,6 @@
       </div>
     </div>
   </div>
-
 
   <!---------------------- Listing Conversation ---------------------->
 

@@ -1,5 +1,6 @@
 # TODO: Seperate location creation
 class User < ApplicationRecord
+  enum role: { member: 0, admin: 1 }
   after_validation :set_location, on: [:create], unless: :location_present?
 
   devise :database_authenticatable, :registerable,

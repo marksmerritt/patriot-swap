@@ -30,11 +30,13 @@ class ListingsController < ApplicationController
 
   def edit
     @listing = Listing.find(params[:id])
+    authorize @listing
     @book = @listing.book
   end
 
   def update
     @listing = Listing.find(params[:id])
+    authorize @listing
 
     if @listing.update(listing_params)
       flash[:success] = "Your listing has been updated successfully."

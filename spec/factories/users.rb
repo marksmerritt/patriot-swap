@@ -29,6 +29,18 @@ FactoryBot.define do
     association :location
   end
 
+  factory :admin_user, class: User do
+    role { :admin }
+    email { generate :email }
+    password { "helloworld" }
+    password_confirmation { "helloworld" }
+    first_name { "Admin" }
+    last_name { "User" }
+    phone { ENV["MY_PHONE_NUMBER"] }
+    confirmed_at { Date.yesterday }
+    association :location
+  end
+
   factory :subscribed_user, class: User do
     email { generate :email }
     password { "helloworld" }
