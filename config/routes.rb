@@ -40,4 +40,6 @@ Rails.application.routes.draw do
   scope controller: :user_settings do 
     patch :toggle_email_subscription
   end
+
+  resources :image_attachments, only: [:destroy]
 end
