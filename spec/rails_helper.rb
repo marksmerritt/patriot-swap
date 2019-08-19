@@ -36,6 +36,9 @@ RSpec.configure do |config|
 
     stub_request(:get, %r{maps.googleapis.com}).
       to_return( status: 200, body: "")
+
+    stub_request(:get, %r{svcs.ebay.com}).
+      to_return( status: 200, body: file_fixture("ebay_product.json").read)
   end
 
   config.before(:each) do 

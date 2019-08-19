@@ -7,4 +7,17 @@
 </section>
 <%= will_paginate @listings %> 
 
-     
+<!-- TODO: Just for testing eBay API, remove -->
+<section class="ebay-results">
+  <% if @ebay_books %>  
+    <h1>Results From eBay:</h1>
+    <% @ebay_books.each do |result| %>
+      <div>
+        <%= image_tag result[:galleryURL].first %> <br>
+        Title: <%= result[:title].first %> <br>
+        <%= link_to "View on eBay", "#{result[:viewItemURL].first}", target: "_blank" %> <br>
+        Price: $<%= result[:sellingStatus].first[:currentPrice].first[:__value__] %>
+      </div>
+    <% end %>
+  <% end %>
+</section>
