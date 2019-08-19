@@ -1,0 +1,34 @@
+<section class="ebay">
+  <h1 class="ebay__heading">Results From eBay:</h1>
+
+  <div class="ebay__results">
+    <% @ebay_books.each do |result| %>
+      <div class="ebay-result">
+        <div class="ebay-result__img-container">
+          <%= image_tag(result[:galleryURL].first, class: "ebay-result__img") %>
+        </div>
+        
+        <div class="ebay-result__details">
+          <p class="ebay-result__title">
+            <span class="ebay-result__label">
+              <%= truncate(result[:title].first, length: 40) %>
+            </span>
+          </p>
+
+          <p class="ebay-result__isbn">
+            <span class="ebay-result__label">ISBN:</span> 
+            <%= params[:q] %>
+          </p>
+
+          <p class="ebay-result__price">
+            <span class="ebay-result__label">Price:</span> 
+            $<%= result[:sellingStatus].first[:currentPrice].first[:__value__] %>
+          </p>
+
+          <%= link_to "View on eBay", "#{result[:viewItemURL].first}", target: "_blank", class: "ebay-result__link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</section>
