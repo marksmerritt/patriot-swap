@@ -8,7 +8,14 @@ class BuyersController < ApplicationController
                                           :book, 
                                           images_attachments: [:blob]]
                                )
-    if params[:q]
+
+    get_ebay_listings if params[:q]
+  end
+
+  private
+
+  def get_ebay_listings
+    if IsbnChecker.is_possible_isbn(params[:q])
       @ebay_books = EbayFinder.by_isbn(isbn: params[:q], limit: 3)
     end
   end
