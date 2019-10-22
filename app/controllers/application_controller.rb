@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
+  before_action :check_whos_there
 
   include Pundit
   protect_from_forgery
@@ -30,5 +31,9 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:error] = "You are not authorized to perform this action"
     redirect_to(request.referrer || root_path)
+  end
+
+  def check_whos_there
+    session[:whos_there] = params[:whos_there] if params[:whos_there]
   end
 end

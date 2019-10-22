@@ -5,7 +5,7 @@
   </h3>
   
   <%= form_tag sellers_path, method: :get, class: "sellers__search-form" do %>
-    <%= text_field_tag :q, nil, autofocus: true, class: "sellers__search-field", id: "book-search-field", value: params[:q] %>
+    <%= text_field_tag :q, nil, autofocus: true, class: "sellers__search-field", id: "book-search-field", value: "9780321445612" %>
     <%= submit_tag "Search", class: "sellers__search-btn", id: "book-search-submit" %>
   <% end %>
   

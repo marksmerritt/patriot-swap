@@ -1,0 +1,19 @@
+.whos-there {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-secondary;
+  padding: 1rem;
+
+  &__greeting {
+    display: block;
+    color: $color-secondary;
+
+    &--bold {
+      font-weight: 500;
+      font-size: 1.8rem;
+      text-decoration: underline;
+    }
+  }
+}
