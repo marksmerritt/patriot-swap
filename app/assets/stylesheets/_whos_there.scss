@@ -1,9 +1,8 @@
 .whos-there {
-  margin-top: 1rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid $color-secondary;
   padding: 1rem;
 
   &__greeting {
@@ -13,7 +12,6 @@
 
     &--bold {
       font-weight: 500;
-      font-size: 1.8rem;
       text-decoration: underline;
     }
   }

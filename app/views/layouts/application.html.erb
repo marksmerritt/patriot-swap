@@ -17,8 +17,6 @@
 
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
     <div class="container">
-      <%= render "shared/whos_there" if session[:whos_there] %>  
-
       <%= render "shared/flash" if flash.present? %>
       <%= render "shared/nav" %>
 
